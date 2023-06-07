@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>Lista de Medicos</title>
   </head>
   <body>
-
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombres</th>
+		  <th>Apellidos</th>
+		  <th>DNI</th>
+		  <th>e-mail</th>
+		  <th>Telefono</th>
+		  <th>Fecha de Nacimiento</th>
+		  <th>Fecha de Ingreso</th>
+		  <th>Domicilio</th>
+		  <th>Especialidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- listaMedicos representa una lista de objetos, quiza requiere reemplazarse en un futuro cercano. -->
+        <tr th:each="medico : ${listaMedicos}">
+          <td th:text="medico.id_medicos"></td>
+          <td th:text="medico.nombres"></td>
+          <td th:text="medico.apellidos"></td>
+          <td th:text="medico.dni"></td>
+          <td th:text="medico.email"></td>
+          <td th:text="medico.telefono"></td>
+          <td th:text="medico.fechaNacimiento"></td>
+          <td th:text="medico.fechaIngreso"></td>
+          <td th:text="medico.domicilio"></td>
+          <td th:text="medico.especialidad"></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

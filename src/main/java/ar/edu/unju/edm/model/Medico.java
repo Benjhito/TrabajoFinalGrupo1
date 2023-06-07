@@ -15,6 +15,7 @@ public class Medico {
 	private Integer legajo;
 	private String nombres;
 	private String apellidos;
+	private Integer dni; // Falta agregar a bd
 	private String email;
 	private String telefono;
 	private LocalDate fecha_nacimiento;
@@ -28,7 +29,7 @@ public class Medico {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Medico(Integer id_medicos, Integer legajo, String nombres, String apellidos, String email, String telefono,
+	public Medico(Integer id_medicos, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
 			String fecha_nacimiento, String fecha_ingreso, String domicilio, Boolean estado,
 			Integer id_especialidad) {
 		super();
@@ -36,6 +37,7 @@ public class Medico {
 		this.legajo = legajo;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
+		this.dni = dni;
 		this.email = email;
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
@@ -76,6 +78,14 @@ public class Medico {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+	
+	public Integer getDni() {
+		return dni;
+	}
+	
+	public void setDni(Integer dni) {
+		this.dni = dni;
 	}
 
 	public String getEmail() {

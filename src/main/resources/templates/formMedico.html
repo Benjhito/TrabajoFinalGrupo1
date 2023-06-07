@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>Formulario Medico</title>
   </head>
   <body>
-
+    <form th:object="${medico}" th:action="@{/mostrarFormMedico}" method="post">
+      <label>Codigo: </label>
+      <input type="number" th:field="*{id_medicos}">
+      <label>Nombre(s): </label>
+      <input type="text" th:field="*{nombres}">
+      <label>Apellido(s): </label>
+      <input type="text" th:field="*{apellidos}">
+      <label>DNI: </label>
+      <input type="number" th:field="*{dni}">
+      <label>e-mail: </label>
+      <input type="text" th:field="*{email}">
+      <label>Telefono: </label>
+      <input type="text" th:field="*{telefono}">
+      <label>Fecha de Nacimiento: </label>
+      <input type="date" th:field="*{fecha_nacimiento}">
+      <label>Fecha de Ingreso: </label>
+      <input type="date" th:field="*{fecha_ingreso}">
+      <label>Domicilio: </label>
+      <input type="text" th:field="*{domicilio}">
+      <!-- Transformar en Select -->
+      <label>Especialidad: </label>
+      <input type="number" th:field="*{especialidad}">
+      <!--  -->
+      <a href="/index">VOLVER</a>
+      <input type="reset" value="RESTAURAR">
+      <input type="submit" value="REGISTRAR">
+    </form>
   </body>
 </html>
