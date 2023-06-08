@@ -10,7 +10,7 @@ public interface MedicoService {
 	public void cargarMedico (Medico nuevoMedico);
 	public ArrayList<Medico> listarMedicos();
 	public Medico mostrarUnMedico(Integer codigo);
-	public Medico eliminarUnMedico(Integer codigo);
+	public void eliminarUnMedico(Integer codigo);
 	public void eliminarTodosLosMedicos();
 	public Medico modificarUnMedico(Integer codigo);
 }
