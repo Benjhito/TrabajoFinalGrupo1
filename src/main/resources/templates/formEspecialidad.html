@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>Formulario Especialidad</title>
   </head>
   <body>
-
+    <form th:object="${especialidad}" th:action="@{/mostrarFormEspecialidad}" method="post">
+      <label>Id: </label>
+      <input type="number" th:field="*{id_especialidad}">
+      <label>Nombre: </label>
+      <input type="text" th:field="*{nombre}">
+      <label>Descripcion: </label>
+      <input type="text" th:field="*{descripcion}">
+      <a href="/index">VOLVER</a>
+      <input type="reset" value="RESTAURAR">
+      <input type="submit" value="REGISTRAR">
+    </form>
   </body>
 </html>
