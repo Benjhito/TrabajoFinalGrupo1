@@ -1,45 +1,51 @@
 package ar.edu.unju.edm.service.imp;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.MedicoService;
-import ar.edu.unju.edm.util.Medicos;
+import ar.edu.unju.edm.repository.MedicoRepository;
 
 @Service
-@Qualifier("servicioEnLista")
+@Qualifier("servicioEnMySQL")
 public class ImpMedicoService implements MedicoService {
+
+	@Autowired
+	MedicoRepository medicoRepository;
+	
 	@Override
 	public void cargarMedico(Medico nuevoMedico) {
 		nuevoMedico.setEstado(true);
-		Medicos.getListadoDeMedicos().add(nuevoMedico);
+		medicoRepository.save(nuevoMedico);
 	}
 	
 	@Override
-	public ArrayList<Medico> listarMedicos() {
-		return Medicos.getListadoDeMedicos();
+	public void eliminarMedico(Integer codigo) {
+		Optional<Medico> auxiliar = Optional.of(new Medico());
+		auxiliar = medicoRepository.findById(codigo);
+		auxiliar.get().setEstado(false);
+		medicoRepository.save(auxiliar.get());
 	}
 	
 	@Override
 	public Medico mostrarUnMedico(Integer codigo) {
-		return null;
+		Optional<Medico> auxiliar = Optional.of(new Medico());
+		auxiliar = medicoRepository.findById(codigo);
+		return auxiliar.get();
 	}
 	
 	@Override
-	public void eliminarUnMedico(Integer codigo) {
-		for(int i = 0; i < Medicos.getListadoDeMedicos().size(); i++) {
-			if (Medicos.getListadoDeMedicos().get(i).getId_medicos() == codigo) {
-				Medicos.getListadoDeMedicos().remove(i);
-			}
-		}
+	public ArrayList<Medico> listarMedicos() {
+		return (ArrayList<Medico>) medicoRepository.findByEstado(true);
 	}
 	
 	@Override
 	public void eliminarTodosLosMedicos() {
-		
+		// TODO Auto-generated method stub
 	}
 	
 	@Override

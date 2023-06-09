@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import ar.edu.unju.edm.model.Medico;
 
 @Repository
-public class MedicoRepository {
+public interface MedicoRepository extends CrudRepository <Medico, Integer> {
+	
 	public List<Medico> findByEstado (Boolean estado);
+	
 }

@@ -3,12 +3,15 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Component
 @Entity
 public class Medico {
-	// Atributos
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_medicos;
@@ -24,7 +27,6 @@ public class Medico {
 	private Boolean estado;
 	private Integer id_especialidad;
 	
-	// Constructores
 	public Medico() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,7 +49,6 @@ public class Medico {
 		this.id_especialidad = id_especialidad;
 	}
 
-	// Getters & Setters
 	public Integer getId_medicos() {
 		return id_medicos;
 	}

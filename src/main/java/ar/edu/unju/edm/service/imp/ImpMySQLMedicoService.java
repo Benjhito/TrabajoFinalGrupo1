@@ -1,4 +1,4 @@
-package ar.edu.unju.edm.service.imp;
+/*package ar.edu.unju.edm.service.imp;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -56,3 +56,4 @@ public class ImpMySQLMedicoService implements MedicoService {
 		medicoRepository.save(auxiliar.get());
 	}
 }
+*/

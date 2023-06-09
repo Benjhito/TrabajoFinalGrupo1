@@ -7,10 +7,12 @@ import ar.edu.unju.edm.model.Medico;
 
 @Service
 public interface MedicoService {
-	public void cargarMedico (Medico nuevoMedico);
-	public ArrayList<Medico> listarMedicos();
+	
+	public void cargarMedico(Medico nuevoMedico);
+	public void eliminarMedico(Integer codigo);
 	public Medico mostrarUnMedico(Integer codigo);
-	public void eliminarUnMedico(Integer codigo);
+	public ArrayList<Medico> listarMedicos();
 	public void eliminarTodosLosMedicos();
 	public Medico modificarUnMedico(Integer codigo);
+	
 }
