@@ -20,7 +20,7 @@ public class PacienteController {
 	@Autowired
 	Paciente paciente;
 	@Autowired
-	@Qualifier
+	@Qualifier("servicioEnMySQL")
 	PacienteService pacienteService;
 	
 	// Carga del formulario
@@ -34,7 +34,7 @@ public class PacienteController {
 	}
 	
 	// Carga de la lista
-	@PostMapping("/listaPacientes")
+	@PostMapping("/mostrarListaPacientes")
 	public ModelAndView mostrarListaPacientes(@ModelAttribute("paciente") Paciente nuevoPaciente) {
 		
 		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");

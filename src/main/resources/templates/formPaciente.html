@@ -5,7 +5,7 @@
     <title>Formulario Paciente</title>
   </head>
   <body>
-    <form th:object="${paciente}" th:action="@{/mostrarFormPaciente}" method="post">
+    <form th:object="${paciente}" th:action="@{/mostrarListaPacientes}" method="post">
       <label>Codigo: </label>
       <input type="number" th:field="*{id_pacientes}">
       <label>Nombre(s): </label>
@@ -20,13 +20,8 @@
       <input type="text" th:field="*{telefono}">
       <label>Fecha de Nacimiento: </label>
       <input type="date" th:field="*{fecha_nacimiento}">
-      <label>Fecha de Ingreso: </label>
-      <input type="date" th:field="*{fecha_ingreso}">
       <label>Domicilio: </label>
       <input type="text" th:field="*{domicilio}">
-      <!-- Transformar en Select -->
-      <label>Especialidad: </label>
-      <input type="number" th:field="*{especialidad}">
       <!--  -->
       <a href="/index">VOLVER</a>
       <input type="reset" value="RESTAURAR">

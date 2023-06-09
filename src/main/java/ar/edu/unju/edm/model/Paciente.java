@@ -22,18 +22,15 @@ public class Paciente {
 	private String email;
 	private String telefono;
 	private LocalDate fecha_nacimiento;
-	private LocalDate fecha_ingreso;
 	private String domicilio;
 	private Boolean estado;
-	private Integer id_especialidad;
 	
 	public Paciente() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Paciente(Integer id_pacientes, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
-			String fecha_nacimiento, String fecha_ingreso, String domicilio, Boolean estado,
-			Integer id_especialidad) {
+			String fecha_nacimiento, String domicilio, Boolean estado) {
 		super();
 		this.id_pacientes = id_pacientes;
 		this.legajo = legajo;
@@ -43,10 +40,8 @@ public class Paciente {
 		this.email = email;
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
-		this.fecha_ingreso = LocalDate.parse(fecha_ingreso);
 		this.domicilio = domicilio;
 		this.estado = estado;
-		this.id_especialidad = id_especialidad;
 	}
 
 	public Integer getId_pacientes() {
@@ -113,14 +108,6 @@ public class Paciente {
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
 	}
 
-	public LocalDate getFecha_ingreso() {
-		return fecha_ingreso;
-	}
-
-	public void setFecha_ingreso(String fecha_ingreso) {
-		this.fecha_ingreso = LocalDate.parse(fecha_ingreso);
-	}
-
 	public String getDomicilio() {
 		return domicilio;
 	}
@@ -135,13 +122,5 @@ public class Paciente {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
-	}
-
-	public Integer getId_especialidad() {
-		return id_especialidad;
-	}
-
-	public void setId_especialidad(Integer id_especialidad) {
-		this.id_especialidad = id_especialidad;
 	}
 }
