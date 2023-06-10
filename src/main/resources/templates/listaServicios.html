@@ -5,6 +5,22 @@
     <title>Lista de Servicios</title>
   </head>
   <body>
-
+    <table>
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Consulta</th>
+          <th>Descr</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- listaMedicos representa una lista de objetos, quiza requiere reemplazarse en un futuro cercano. -->
+        <tr th:each="Servicio : ${listaServicios}">
+          <td th:text="Servicio.Codigo"></td>
+          <td th:text="Servicio.Consulta""></td>
+          <td th:text="Servicio.Descr"></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
