@@ -1,4 +1,3 @@
-/*Nota: El constructor y los getters reciben la fecha como String y la transforman a LocalDate.*/
 package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
@@ -11,14 +10,14 @@ import jakarta.persistence.GenerationType;
 @Component
 @Entity
 public class Medico {
-	
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_medicos;
+	private Integer id_medico;
 	private Integer legajo;
 	private String nombres;
 	private String apellidos;
-	private Integer dni; // Falta agregar a bd
+	private Integer dni;
 	private String email;
 	private String telefono;
 	private LocalDate fecha_nacimiento;
@@ -27,15 +26,16 @@ public class Medico {
 	private Boolean estado;
 	private Integer id_especialidad;
 	
+	// Constructores
 	public Medico() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Medico(Integer id_medicos, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
+	public Medico(Integer id_medico, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
 			String fecha_nacimiento, String fecha_ingreso, String domicilio, Boolean estado,
 			Integer id_especialidad) {
 		super();
-		this.id_medicos = id_medicos;
+		this.id_medico = id_medico;
 		this.legajo = legajo;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
@@ -49,12 +49,13 @@ public class Medico {
 		this.id_especialidad = id_especialidad;
 	}
 
-	public Integer getId_medicos() {
-		return id_medicos;
+	// Getters y Setters
+	public Integer getId_medico() {
+		return id_medico;
 	}
 
-	public void setId_medicos(Integer id_medicos) {
-		this.id_medicos = id_medicos;
+	public void setId_medico(Integer id_medicos) {
+		this.id_medico = id_medicos;
 	}
 
 	public Integer getLegajo() {

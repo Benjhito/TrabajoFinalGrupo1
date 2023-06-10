@@ -1,18 +1,24 @@
 package ar.edu.unju.edm.model;
+
 import org.springframework.stereotype.Component;
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Component
 @Entity
 public class Especialidad {
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_especialidad;
 	private Boolean estado;
 	private int nombre;
 	private int descripcion;
-	 
-	 public Especialidad() {
+	
+	// Constructores
+	public Especialidad() {
 		// TODO Auto-generated constructor stub
 	} 
 	 
@@ -23,7 +29,8 @@ public class Especialidad {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
-
+	
+	// Getters y Setters
 	public Integer getId_especialidad() {
 		return id_especialidad;
 	}
@@ -55,5 +62,4 @@ public class Especialidad {
 	public void setDescripcion(int descripcion) {
 		this.descripcion = descripcion;
 	}
-	 
 }
