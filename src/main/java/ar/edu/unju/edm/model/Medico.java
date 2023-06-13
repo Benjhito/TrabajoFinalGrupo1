@@ -6,39 +6,80 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Component
 @Entity
 public class Medico {
 	// Atributos
 	@Id
+	@Positive
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_medico;
+	
+	@NotNull
 	private Integer legajo;
+	
+	@NotBlank
+	@Size(min = 1, max = 50)
 	private String nombres;
+	
+	@NotBlank
+	@Size(min = 1, max = 50)
 	private String apellidos;
+	
+	@NotBlank
+	@Size(min = 10, max = 50)
+	private String clave;
+	
+	@NotNull
 	private Integer dni;
+	
+	@Size(min = 0, max = 50) 
 	private String email;
+	
+	@Size(min = 0, max = 20)
 	private String telefono;
+	
+	@NotNull
 	private LocalDate fecha_nacimiento;
+	
+	@NotNull
 	private LocalDate fecha_ingreso;
+	
+	@Size(min = 0, max = 100)
 	private String domicilio;
+	
+	@NotNull
 	private Boolean estado;
-	private Integer id_especialidad;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_especialidad")
+	private Especialidad especialidad;
 	
 	// Constructores
 	public Medico() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public Medico(Integer id_medico, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
-			String fecha_nacimiento, String fecha_ingreso, String domicilio, Boolean estado,
-			Integer id_especialidad) {
+	
+	public Medico(@Positive Integer id_medico, @NotNull Integer legajo,
+			@NotBlank @Size(min = 1, max = 50) String nombres, @NotBlank @Size(min = 1, max = 50) String apellidos,
+			@NotBlank @Size(min = 10, max = 50) String clave, @NotNull Integer dni,
+			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
+			@NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
+			@Size(min = 0, max = 100) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
 		super();
 		this.id_medico = id_medico;
 		this.legajo = legajo;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
+		this.clave = clave;
 		this.dni = dni;
 		this.email = email;
 		this.telefono = telefono;
@@ -46,7 +87,7 @@ public class Medico {
 		this.fecha_ingreso = LocalDate.parse(fecha_ingreso);
 		this.domicilio = domicilio;
 		this.estado = estado;
-		this.id_especialidad = id_especialidad;
+		this.especialidad = especialidad;
 	}
 
 	// Getters y Setters
@@ -54,8 +95,8 @@ public class Medico {
 		return id_medico;
 	}
 
-	public void setId_medico(Integer id_medicos) {
-		this.id_medico = id_medicos;
+	public void setId_medico(Integer id_medico) {
+		this.id_medico = id_medico;
 	}
 
 	public Integer getLegajo() {
@@ -81,11 +122,11 @@ public class Medico {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
 	public Integer getDni() {
 		return dni;
 	}
-	
+
 	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
@@ -138,11 +179,11 @@ public class Medico {
 		this.estado = estado;
 	}
 
-	public Integer getId_especialidad() {
-		return id_especialidad;
+	public Especialidad getId_especialidad() {
+		return especialidad;
 	}
 
-	public void setId_especialidad(Integer id_especialidad) {
-		this.id_especialidad = id_especialidad;
+	public void setId_especialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
 	}
 }

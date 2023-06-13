@@ -6,21 +6,44 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Component
 @Entity
 public class Paciente {
 	// Atributos
 	@Id
+	@Positive
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_paciente;
+	
+	@NotBlank
+	@Size(min = 1, max = 50)
 	private String nombres;
+	
+	@NotBlank
+	@Size(min = 1, max = 50)
 	private String apellidos;
+	
+	@NotBlank
 	private Integer dni; 
+	
+	@Size(min = 0, max = 50)
 	private String email;
+	
+	@Size(min = 0, max = 20)
 	private String telefono;
+	
+	@NotNull
 	private LocalDate fecha_nacimiento;
+	
+	@Size(min = 0, max = 100)
 	private String domicilio;
+	
+	@NotNull
 	private Boolean estado;
 	
 	// Consctructores
@@ -28,8 +51,10 @@ public class Paciente {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Paciente(Integer id_paciente, String nombres, String apellidos, Integer dni, String email, String telefono,
-			String fecha_nacimiento, String domicilio, Boolean estado) {
+	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 50) String nombres,
+			@NotBlank @Size(min = 1, max = 50) String apellidos, @NotBlank Integer dni,
+			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
+			@NotNull String fecha_nacimiento, @Size(min = 0, max = 100) String domicilio, @NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
 		this.nombres = nombres;
@@ -42,7 +67,6 @@ public class Paciente {
 		this.estado = estado;
 	}
 
-	// Getters y Setters
 	public Integer getId_paciente() {
 		return id_paciente;
 	}
@@ -66,11 +90,11 @@ public class Paciente {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
 	public Integer getDni() {
 		return dni;
 	}
-	
+
 	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
