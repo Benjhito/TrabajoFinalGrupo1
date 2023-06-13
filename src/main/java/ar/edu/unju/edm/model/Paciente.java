@@ -29,6 +29,10 @@ public class Paciente {
 	private String apellidos;
 	
 	@NotBlank
+	@Size(min = 10, max = 50)
+	private String clave;
+	
+	@NotBlank
 	private Integer dni; 
 	
 	@Size(min = 0, max = 50)
@@ -52,13 +56,14 @@ public class Paciente {
 	}
 
 	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 50) String nombres,
-			@NotBlank @Size(min = 1, max = 50) String apellidos, @NotBlank Integer dni,
-			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
+			@NotBlank @Size(min = 1, max = 50) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave, 
+			@NotBlank Integer dni, @Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
 			@NotNull String fecha_nacimiento, @Size(min = 0, max = 100) String domicilio, @NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
+		this.clave = clave;
 		this.dni = dni;
 		this.email = email;
 		this.telefono = telefono;
@@ -89,6 +94,14 @@ public class Paciente {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+	
+	public String getClave() {
+		return clave;
+	}
+	
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
 	public Integer getDni() {

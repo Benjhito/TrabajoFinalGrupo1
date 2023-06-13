@@ -32,8 +32,8 @@ public class Servicio {
     @NotNull
     private Boolean estado;
     
-    @ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_medico")
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_medico")
     private Medico medico;
     
     // Constructores

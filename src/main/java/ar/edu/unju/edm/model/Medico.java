@@ -59,8 +59,8 @@ public class Medico {
 	@NotNull
 	private Boolean estado;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_especialidad")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_especialidad")
 	private Especialidad especialidad;
 	
 	// Constructores
@@ -122,7 +122,15 @@ public class Medico {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
+	
+	public String getClave() {
+		return clave;
+	}
+	
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+	
 	public Integer getDni() {
 		return dni;
 	}
