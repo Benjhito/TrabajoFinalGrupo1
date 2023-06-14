@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import ar.edu.unju.edm.model.Paciente_Servicio;
 import ar.edu.unju.edm.service.Paciente_ServicioService;
 
+@Controller
 public class Paciente_ServicioController {
 	// Entidad y Servicio utilizados
 	@Autowired
