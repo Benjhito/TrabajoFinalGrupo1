@@ -13,6 +13,9 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Email;
 
 @Component
 @Entity
@@ -23,15 +26,12 @@ public class Medico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_medico;
 	
-	@NotNull
-	private Integer legajo;
-	
 	@NotBlank
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 30)
 	private String nombres;
 	
 	@NotBlank
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 30)
 	private String apellidos;
 	
 	@NotBlank
@@ -39,9 +39,17 @@ public class Medico {
 	private String clave;
 	
 	@NotNull
+	@Min(value = 10000000)
+	@Max(value = 99999999)
 	private Integer dni;
+
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 9999)
+	private Integer legajo;
 	
-	@Size(min = 0, max = 50) 
+	@Size(min = 0, max = 50)
+	@Email
 	private String email;
 	
 	@Size(min = 0, max = 20)
@@ -53,7 +61,7 @@ public class Medico {
 	@NotNull
 	private LocalDate fecha_ingreso;
 	
-	@Size(min = 0, max = 100)
+	@Size(min = 0, max = 50)
 	private String domicilio;
 	
 	@NotNull
@@ -68,19 +76,19 @@ public class Medico {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Medico(@Positive Integer id_medico, @NotNull Integer legajo,
-			@NotBlank @Size(min = 1, max = 50) String nombres, @NotBlank @Size(min = 1, max = 50) String apellidos,
-			@NotBlank @Size(min = 10, max = 50) String clave, @NotNull Integer dni,
-			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
+	public Medico(@Positive Integer id_medico, @NotBlank @Size(min = 1, max = 30) String nombres,
+			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
+			@NotNull @Min(10000000) @Max(99999999) Integer dni, @NotNull @Min(1) @Max(9999) Integer legajo,
+			@Size(min = 0, max = 50) @Email String email, @Size(min = 0, max = 20) String telefono,
 			@NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
-			@Size(min = 0, max = 100) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
+			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
 		super();
 		this.id_medico = id_medico;
-		this.legajo = legajo;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.clave = clave;
 		this.dni = dni;
+		this.legajo = legajo;
 		this.email = email;
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
@@ -99,14 +107,6 @@ public class Medico {
 		this.id_medico = id_medico;
 	}
 
-	public Integer getLegajo() {
-		return legajo;
-	}
-
-	public void setLegajo(Integer legajo) {
-		this.legajo = legajo;
-	}
-
 	public String getNombres() {
 		return nombres;
 	}
@@ -122,21 +122,29 @@ public class Medico {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
 	public String getClave() {
 		return clave;
 	}
-	
+
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
-	
+
 	public Integer getDni() {
 		return dni;
 	}
 
 	public void setDni(Integer dni) {
 		this.dni = dni;
+	}
+
+	public Integer getLegajo() {
+		return legajo;
+	}
+
+	public void setLegajo(Integer legajo) {
+		this.legajo = legajo;
 	}
 
 	public String getEmail() {
@@ -187,11 +195,11 @@ public class Medico {
 		this.estado = estado;
 	}
 
-	public Especialidad getId_especialidad() {
+	public Especialidad getEspecialidad() {
 		return especialidad;
 	}
 
-	public void setId_especialidad(Especialidad especialidad) {
+	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
-	}
+	}	
 }

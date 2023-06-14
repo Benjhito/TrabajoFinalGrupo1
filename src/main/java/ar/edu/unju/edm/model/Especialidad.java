@@ -17,13 +17,13 @@ public class Especialidad {
 	@Id
 	@Positive
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_especialidad;
+	private Integer id_especialidad;	
 	
 	@NotBlank
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 40)
 	private Integer nombre;
 	
-	@Size(min = 0, max = 100)
+	@Size(min = 0, max = 50)
 	private Integer descripcion;
 	
 	@NotNull
@@ -33,16 +33,16 @@ public class Especialidad {
 	public Especialidad() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Especialidad(@Positive Integer id_especialidad, @NotBlank @Size(min = 1, max = 50) Integer nombre,
-			@Size(min = 0, max = 100) Integer descripcion, @NotNull Boolean estado) {
+
+	public Especialidad(@Positive Integer id_especialidad, @NotBlank @Size(min = 1, max = 40) Integer nombre,
+			@Size(min = 0, max = 50) Integer descripcion, @NotNull Boolean estado) {
 		super();
 		this.id_especialidad = id_especialidad;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.estado = estado;
 	}
-
+	
 	// Getters y Setters
 	public Integer getId_especialidad() {
 		return id_especialidad;

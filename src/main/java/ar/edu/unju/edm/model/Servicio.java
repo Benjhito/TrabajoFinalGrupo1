@@ -12,6 +12,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
 
 @Component
 @Entity
@@ -22,12 +23,13 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_servicio;
     
-    @NotNull
-    private Integer coste;
-    
     @NotBlank
-    @Size(min = 0, max = 100)
+    @Size(min = 0, max = 50)
     private String descripcion;
+    
+    @NotNull
+    @Min(value = 0)
+    private Float costo;
 	
     @NotNull
     private Boolean estado;
@@ -41,12 +43,12 @@ public class Servicio {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Servicio(@Positive Integer id_servicio, @NotNull Integer coste, @NotBlank @Size(min = 0, max = 100) String descripcion,
-			@NotNull Boolean estado, Medico medico) {
+	public Servicio(@Positive Integer id_servicio, @NotBlank @Size(min = 0, max = 50) String descripcion,
+			@NotNull @Min(0) Float costo, @NotNull Boolean estado, Medico medico) {
 		super();
 		this.id_servicio = id_servicio;
-		this.coste = coste;
 		this.descripcion = descripcion;
+		this.costo = costo;
 		this.estado = estado;
 		this.medico = medico;
 	}
@@ -60,20 +62,20 @@ public class Servicio {
 		this.id_servicio = id_servicio;
 	}
 
-	public Integer getCoste() {
-		return coste;
-	}
-
-	public void setCoste(Integer coste) {
-		this.coste = coste;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public Float getCosto() {
+		return costo;
+	}
+
+	public void setCosto(Float costo) {
+		this.costo = costo;
 	}
 
 	public Boolean getEstado() {

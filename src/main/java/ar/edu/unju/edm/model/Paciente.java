@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,11 +23,11 @@ public class Paciente {
 	private Integer id_paciente;
 	
 	@NotBlank
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 30)
 	private String nombres;
 	
 	@NotBlank
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 30)
 	private String apellidos;
 	
 	@NotBlank
@@ -33,7 +35,12 @@ public class Paciente {
 	private String clave;
 	
 	@NotBlank
+	@Min(value = 10000000)
+	@Max(value = 99999999)
 	private Integer dni; 
+	
+	@Size(min = 0, max = 50)
+	private String obra_social;
 	
 	@Size(min = 0, max = 50)
 	private String email;
@@ -41,10 +48,9 @@ public class Paciente {
 	@Size(min = 0, max = 20)
 	private String telefono;
 	
-	@NotNull
 	private LocalDate fecha_nacimiento;
 	
-	@Size(min = 0, max = 100)
+	@Size(min = 0, max = 50)
 	private String domicilio;
 	
 	@NotNull
@@ -55,16 +61,18 @@ public class Paciente {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 50) String nombres,
-			@NotBlank @Size(min = 1, max = 50) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave, 
-			@NotBlank Integer dni, @Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono,
-			@NotNull String fecha_nacimiento, @Size(min = 0, max = 100) String domicilio, @NotNull Boolean estado) {
+	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 30) String nombres,
+			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
+			@NotBlank @Min(10000000) @Max(99999999) Integer dni, @Size(min = 0, max = 50) String obra_social,
+			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono, String fecha_nacimiento,
+			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.clave = clave;
 		this.dni = dni;
+		this.obra_social = obra_social;
 		this.email = email;
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
@@ -72,6 +80,7 @@ public class Paciente {
 		this.estado = estado;
 	}
 
+	// Getters y Setters
 	public Integer getId_paciente() {
 		return id_paciente;
 	}
@@ -95,11 +104,11 @@ public class Paciente {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
 	public String getClave() {
 		return clave;
 	}
-	
+
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
@@ -110,6 +119,14 @@ public class Paciente {
 
 	public void setDni(Integer dni) {
 		this.dni = dni;
+	}
+	
+	public String getObra_social() {
+		return obra_social;
+	}
+
+	public void setObra_social(String obra_social) {
+		this.obra_social = obra_social;
 	}
 
 	public String getEmail() {
