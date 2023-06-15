@@ -11,9 +11,8 @@ import ar.edu.unju.edm.service.PacienteService;
 import ar.edu.unju.edm.repository.PacienteRepository;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("servicioPaciente")
 public class ImpPacienteService implements PacienteService {
-
 	@Autowired
 	PacienteRepository pacienteRepository;
 	

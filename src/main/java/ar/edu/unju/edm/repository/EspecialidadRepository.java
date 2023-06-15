@@ -1,6 +1,5 @@
 package ar.edu.unju.edm.repository;
 
-
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;

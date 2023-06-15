@@ -1,4 +1,4 @@
-/*Queda abierta la posibilidad de que esta clase quede obsoleta.*/
+/*/*Queda abierta la posibilidad de que esta clase quede obsoleta.
 package ar.edu.unju.edm.util;
 
 import java.util.ArrayList;
@@ -16,3 +16,4 @@ public class Medicos {
 		return listadoDeMedicos;
 	}
 }
+*/

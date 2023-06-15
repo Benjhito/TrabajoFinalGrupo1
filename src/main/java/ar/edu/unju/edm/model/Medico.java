@@ -1,4 +1,3 @@
-/*Nota: El constructor y los getters reciben la fecha como String y la transforman a LocalDate.*/
 package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
@@ -7,62 +6,105 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Email;
 
 @Component
 @Entity
 public class Medico {
-	
+	// Atributos
 	@Id
+	@Positive
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_medicos;
-	private Integer legajo;
-	private String nombres;
-	private String apellidos;
-	private Integer dni; // Falta agregar a bd
-	private String email;
-	private String telefono;
-	private LocalDate fecha_nacimiento;
-	private LocalDate fecha_ingreso;
-	private String domicilio;
-	private Boolean estado;
-	private Integer id_especialidad;
+	private Integer id_medico;
 	
+	@NotBlank
+	@Size(min = 1, max = 30)
+	private String nombres;
+	
+	@NotBlank
+	@Size(min = 1, max = 30)
+	private String apellidos;
+	
+	@NotBlank
+	@Size(min = 10, max = 50)
+	private String clave;
+	
+	@NotNull
+	@Min(value = 10000000)
+	@Max(value = 99999999)
+	private Integer dni;
+
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 9999)
+	private Integer legajo;
+	
+	@Size(min = 0, max = 50)
+	@Email
+	private String email;
+	
+	@Size(min = 0, max = 20)
+	private String telefono;
+	
+	@NotNull
+	private LocalDate fecha_nacimiento;
+	
+	@NotNull
+	private LocalDate fecha_ingreso;
+	
+	@Size(min = 0, max = 50)
+	private String domicilio;
+	
+	@NotNull
+	private Boolean estado;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_especialidad")
+	private Especialidad especialidad;
+	
+	// Constructores
 	public Medico() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public Medico(Integer id_medicos, Integer legajo, String nombres, String apellidos, Integer dni, String email, String telefono,
-			String fecha_nacimiento, String fecha_ingreso, String domicilio, Boolean estado,
-			Integer id_especialidad) {
+	
+	public Medico(@Positive Integer id_medico, @NotBlank @Size(min = 1, max = 30) String nombres,
+			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
+			@NotNull @Min(10000000) @Max(99999999) Integer dni, @NotNull @Min(1) @Max(9999) Integer legajo,
+			@Size(min = 0, max = 50) @Email String email, @Size(min = 0, max = 20) String telefono,
+			@NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
+			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
 		super();
-		this.id_medicos = id_medicos;
-		this.legajo = legajo;
+		this.id_medico = id_medico;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
+		this.clave = clave;
 		this.dni = dni;
+		this.legajo = legajo;
 		this.email = email;
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
 		this.fecha_ingreso = LocalDate.parse(fecha_ingreso);
 		this.domicilio = domicilio;
 		this.estado = estado;
-		this.id_especialidad = id_especialidad;
+		this.especialidad = especialidad;
 	}
 
-	public Integer getId_medicos() {
-		return id_medicos;
+	// Getters y Setters
+	public Integer getId_medico() {
+		return id_medico;
 	}
 
-	public void setId_medicos(Integer id_medicos) {
-		this.id_medicos = id_medicos;
-	}
-
-	public Integer getLegajo() {
-		return legajo;
-	}
-
-	public void setLegajo(Integer legajo) {
-		this.legajo = legajo;
+	public void setId_medico(Integer id_medico) {
+		this.id_medico = id_medico;
 	}
 
 	public String getNombres() {
@@ -80,13 +122,29 @@ public class Medico {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 	public Integer getDni() {
 		return dni;
 	}
-	
+
 	public void setDni(Integer dni) {
 		this.dni = dni;
+	}
+
+	public Integer getLegajo() {
+		return legajo;
+	}
+
+	public void setLegajo(Integer legajo) {
+		this.legajo = legajo;
 	}
 
 	public String getEmail() {
@@ -137,11 +195,11 @@ public class Medico {
 		this.estado = estado;
 	}
 
-	public Integer getId_especialidad() {
-		return id_especialidad;
+	public Especialidad getEspecialidad() {
+		return especialidad;
 	}
 
-	public void setId_especialidad(Integer id_especialidad) {
-		this.id_especialidad = id_especialidad;
-	}
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}	
 }

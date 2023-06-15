@@ -11,7 +11,7 @@ import ar.edu.unju.edm.service.EspecialidadService;
 import ar.edu.unju.edm.repository.EspecialidadRepository;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("servicioEspecialidad")
 public class ImpEspecialidadService implements EspecialidadService{
 	@Autowired
 	EspecialidadRepository especialidadRepository;

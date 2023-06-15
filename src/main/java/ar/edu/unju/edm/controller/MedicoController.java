@@ -7,26 +7,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 
 import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.MedicoService;
 
 @Controller
 public class MedicoController {
-	private static final Log GRUPO1 = LogFactory.getLog(MedicoController.class);
-	
+	// Entidad y Servicio utilizados
 	@Autowired
 	Medico medico;
 	@Autowired
-	@Qualifier
+	@Qualifier("servicioMedico")
 	MedicoService medicoService;
 	
 	// Carga del formulario
 	@GetMapping("/formMedico")
 	public ModelAndView cargarFormMedico() {
-		
+		// Creacion de la vista y adicion del objeto a la vista
 		ModelAndView vistaFormMedico = new ModelAndView("formMedico");
 		vistaFormMedico.addObject("medico", medico);
 		
@@ -36,13 +33,14 @@ public class MedicoController {
 	// Carga de la lista
 	@PostMapping("/listaMedicos")
 	public ModelAndView mostrarListaMedicos(@ModelAttribute("medico") Medico nuevoMedico) {
-		
+		// Creacion de la vista
 		ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
-		GRUPO1.warn("Mostrando nuevo registro" + nuevoMedico.getNombres());
+		
+		// Carga del objeto desde la BD y adicion del mismo a la vista
 		try {
 			medicoService.cargarMedico(nuevoMedico);
 		} catch (Exception e) {
-			
+			// TODO: handle exception
 		}
 		vistaListaMedicos.addObject("listaMedicos", medicoService.listarMedicos());
 		
