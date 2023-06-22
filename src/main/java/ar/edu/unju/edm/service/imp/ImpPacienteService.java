@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ar.edu.unju.edm.model.Paciente;
 import ar.edu.unju.edm.service.PacienteService;
@@ -20,6 +21,12 @@ public class ImpPacienteService implements PacienteService {
 	@Override
 	public void cargarPaciente(Paciente nuevoPaciente) {
 		nuevoPaciente.setEstado(true);
+		nuevoPaciente.setTipo_usuario("USUARIO");
+		
+		String pw = nuevoPaciente.getClave();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+		nuevoPaciente.setClave(encoder.encode(pw));
+
 		pacienteRepository.save(nuevoPaciente);
 	}
 	
