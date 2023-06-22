@@ -43,12 +43,22 @@ public class ImpEspecialidadService implements EspecialidadService{
 	}
 	
 	@Override
-	public void eliminarTodasLasEspecialidades() {
-		// TODO Auto-generated method stub
+	public void modificarUnaEspecialidad(Especialidad especialidad) {
+		  Optional<Especialidad> especialidadExistente = especialidadRepository.findById(especialidad.getId_especialidad());
+		    if (especialidadExistente.isPresent()) {
+		        Especialidad especialidadActualizado = especialidadExistente.get();
+		        especialidadActualizado.setNombre(especialidad.getNombre());
+		        especialidadActualizado.setDescripcion(especialidad.getDescripcion());
+		        especialidadActualizado.setEstado(especialidad.getEstado());
+		        especialidadRepository.save(especialidadActualizado);
+		    } else {
+		        // TODO Handle Exception
+		    }
 	}
-
+	
 	@Override
-	public Especialidad modificarUnaEspecialidad(Integer codigo) {
-		return null;
+	public boolean existeEspecialidad(Especialidad especialidad) {
+		Especialidad especialidadExistente = especialidadRepository.findByLegajo(especialidad.getNombre());
+		return especialidadExistente != null;
 	}
 }

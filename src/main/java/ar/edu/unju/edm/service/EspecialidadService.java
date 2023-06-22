@@ -12,6 +12,7 @@ public interface EspecialidadService {
 	public void eliminarEspecialidad(Integer codigo);
 	public Especialidad mostrarUnaEspecialidad(Integer codigo);
 	public ArrayList<Especialidad> listarEspecialidades();
-	public void eliminarTodasLasEspecialidades();
-	public Especialidad modificarUnaEspecialidad(Integer codigo);
+	public void modificarUnaEspecialidad(Especialidad especialidad);
+
+	public boolean existeEspecialidad(Especialidad especialidad);
 }

@@ -9,6 +9,7 @@ import ar.edu.unju.edm.model.Especialidad;
 @Repository
 public interface EspecialidadRepository extends CrudRepository <Especialidad, Integer> {
 	
+
 	public List<Especialidad> findByEstado (Boolean estado);
-	
+	public Especialidad findByLegajo (Integer nombre);
 }
