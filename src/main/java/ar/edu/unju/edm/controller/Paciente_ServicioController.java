@@ -79,7 +79,7 @@ public class Paciente_ServicioController {
 	    @PostMapping("/eliminarPaciente_Servicio")
 	    public ModelAndView eliminarPaciente_Servicio(@RequestParam("id_pacienteservicio") Integer id_pacienteservicio) {
 	      ModelAndView vistaListaMedicos = new ModelAndView("listaPacientes_Servicios");
-	      paciente_servicioService.eliminarPaciente_Servicio(id_pacienteservico);
+	      paciente_servicioService.eliminarPaciente_Servicio(id_pacienteservicio);
 	      vistaListaMedicos.addObject("listaPacientes_Servicio", paciente_servicioService.listarRegistros());
 	      vistaListaMedicos.addObject("mensaje", "El paciente_servicio se ha eliminado exitosamente.");
 	      return vistaListaMedicos;
