@@ -2,10 +2,10 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -56,6 +56,8 @@ public class Paciente {
 	@NotNull
 	private Boolean estado;
 	
+	@NotBlank
+	private String tipo;
 	// Consctructores
 	public Paciente() {
 		// TODO Auto-generated constructor stub
@@ -168,4 +170,13 @@ public class Paciente {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 }
