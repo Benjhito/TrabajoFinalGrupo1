@@ -58,7 +58,7 @@ public class ImpEspecialidadService implements EspecialidadService{
 	
 	@Override
 	public boolean existeEspecialidad(Especialidad especialidad) {
-		Especialidad especialidadExistente = especialidadRepository.findByLegajo(especialidad.getNombre());
+		Especialidad especialidadExistente = especialidadRepository.findByNombre(especialidad.getNombre());
 		return especialidadExistente != null;
 	}
 }

@@ -11,5 +11,5 @@ public interface EspecialidadRepository extends CrudRepository <Especialidad, In
 	
 
 	public List<Especialidad> findByEstado (Boolean estado);
-	public Especialidad findByLegajo (Integer nombre);
+	public Especialidad findByNombre (String nombre);
 }
