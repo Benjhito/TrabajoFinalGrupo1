@@ -6,15 +6,22 @@
   </head>
   <body>
     <form th:object="${especialidad}" th:action="@{/mostrarFormEspecialidad}" method="post">
-      <label>Id: </label>
-      <input type="number" th:field="*{id_especialidad}">
-      <label>Nombre: </label>
-      <input type="text" th:field="*{nombre}">
-      <label>Descripcion: </label>
-      <input type="text" th:field="*{descripcion}">
-      <a href="/index">VOLVER</a>
-      <input type="reset" value="RESTAURAR">
-      <input type="submit" value="REGISTRAR">
-    </form>
+     <input type="hidden" th:field="*{id_especialidad}">
+      <fieldset>
+        <legend>Información general</legend>
+        <div>
+          <label for="nombre">Nombre: </label>
+          <input type="text" id="nombre" name="nombre" th:field="*{nombre}" th:value="${especialidad.nombre}" required>
+        </div>
+        <div>
+          <label for="descripcion">Descripcion: </label>
+          <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}" th:value="${especialidad.descripcion}" required>
+        </div>
+      </fieldset>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+     </form>
   </body>
 </html>
