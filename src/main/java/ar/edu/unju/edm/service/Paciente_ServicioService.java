@@ -12,6 +12,6 @@ public interface Paciente_ServicioService {
 	public void eliminarPaciente_Servicio(Integer codigo);
 	public Paciente_Servicio mostrarPaciente_Servicio(Integer codigo);
 	public ArrayList<Paciente_Servicio> listarRegistros();
-	public void eliminarTodosLosRegistros();
-	public Paciente_Servicio modificarPaciente_Servicio(Integer codigo);
+	public void modificarPaciente_Servicio(Paciente_Servicio paciente_servicio);
+	public boolean existePaciente_Servicio(Paciente_Servicio paciente_servicio);
 }
