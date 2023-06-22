@@ -2,13 +2,13 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
@@ -33,10 +33,6 @@ public class Medico {
 	@NotBlank
 	@Size(min = 1, max = 30)
 	private String apellidos;
-	
-	@NotBlank
-	@Size(min = 10, max = 50)
-	private String clave;
 	
 	@NotNull
 	@Min(value = 10000000)
@@ -77,16 +73,14 @@ public class Medico {
 	}
 	
 	public Medico(@Positive Integer id_medico, @NotBlank @Size(min = 1, max = 30) String nombres,
-			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
-			@NotNull @Min(10000000) @Max(99999999) Integer dni, @NotNull @Min(1) @Max(9999) Integer legajo,
-			@Size(min = 0, max = 50) @Email String email, @Size(min = 0, max = 20) String telefono,
-			@NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
+			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotNull @Min(10000000) @Max(99999999) Integer dni, 
+			@NotNull @Min(1) @Max(9999) Integer legajo, @Size(min = 0, max = 50) @Email String email, 
+			@Size(min = 0, max = 20) String telefono, @NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
 			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
 		super();
 		this.id_medico = id_medico;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.clave = clave;
 		this.dni = dni;
 		this.legajo = legajo;
 		this.email = email;
@@ -121,14 +115,6 @@ public class Medico {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
-	}
-
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
 	}
 
 	public Integer getDni() {

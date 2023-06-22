@@ -49,7 +49,6 @@ public class ImpMedicoService implements MedicoService {
 	        Medico medicoActualizado = medicoExistente.get();
 	        medicoActualizado.setNombres(medico.getNombres());
 	        medicoActualizado.setApellidos(medico.getApellidos());
-	        medicoActualizado.setClave(medico.getClave());
 	        medicoActualizado.setDni(medico.getDni());
 	        medicoActualizado.setLegajo(medico.getLegajo());
 	        medicoActualizado.setEmail(medico.getEmail());

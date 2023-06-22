@@ -2,70 +2,53 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Max;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Component
 @Entity
 public class Paciente {
 	// Atributos
-	@Id
-	@Positive
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	@Positive @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_paciente;
-	
-	@NotBlank
-	@Size(min = 1, max = 30)
+	@NotBlank @Size(min = 1, max = 30)
 	private String nombres;
-	
-	@NotBlank
-	@Size(min = 1, max = 30)
+	@NotBlank @Size(min = 1, max = 30)
 	private String apellidos;
-	
-	@NotBlank
-	@Size(min = 10, max = 50)
+	@NotBlank @Size(min = 10, max = 50)
 	private String clave;
-	
-	@NotBlank
-	@Min(value = 10000000)
-	@Max(value = 99999999)
-	private Integer dni; 
-	
+	@NotBlank @Min(value = 10000000) @Max(value = 99999999)
+	private Integer dni;
 	@Size(min = 0, max = 50)
 	private String obra_social;
-	
 	@Size(min = 0, max = 50)
 	private String email;
-	
 	@Size(min = 0, max = 20)
 	private String telefono;
-	
 	private LocalDate fecha_nacimiento;
-	
 	@Size(min = 0, max = 50)
 	private String domicilio;
-	
+	@NotBlank
+	private String tipo_usuario;
 	@NotNull
 	private Boolean estado;
 	
-	// Consctructores
-	public Paciente() {
-		// TODO Auto-generated constructor stub
-	}
-
+	// Constructores
+	public Paciente() {}
+	
 	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 30) String nombres,
 			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
 			@NotBlank @Min(10000000) @Max(99999999) Integer dni, @Size(min = 0, max = 50) String obra_social,
 			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono, String fecha_nacimiento,
-			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado) {
+			@Size(min = 0, max = 50) String domicilio, @NotBlank String tipo_usuario, @NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
 		this.nombres = nombres;
@@ -77,6 +60,7 @@ public class Paciente {
 		this.telefono = telefono;
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
 		this.domicilio = domicilio;
+		this.tipo_usuario = tipo_usuario;
 		this.estado = estado;
 	}
 
@@ -152,6 +136,10 @@ public class Paciente {
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
 	}
+	
+	public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
 
 	public String getDomicilio() {
 		return domicilio;
@@ -161,6 +149,14 @@ public class Paciente {
 		this.domicilio = domicilio;
 	}
 
+	public String getTipo_usuario() {
+		return tipo_usuario;
+	}
+
+	public void setTipo_usuario(String tipo_usuario) {
+		this.tipo_usuario = tipo_usuario;
+	}
+	
 	public Boolean getEstado() {
 		return estado;
 	}

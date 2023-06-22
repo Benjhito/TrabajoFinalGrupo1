@@ -31,16 +31,18 @@ public class MedicoController {
     public ModelAndView cargarFormMedico() {
         ModelAndView vistaFormMedico = new ModelAndView("formMedico");
         vistaFormMedico.addObject("medico", new Medico());
+        
         return vistaFormMedico;
     }
     
     @PostMapping("/listaMedicos")
 	public ModelAndView mostrarListaMedicos(@ModelAttribute("medico") Medico nuevoMedico) {
 		ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
+		
 		try {
 			medicoService.cargarMedico(nuevoMedico);
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: Handle exception
 		}
 		vistaListaMedicos.addObject("listaMedicos", medicoService.listarMedicos());
 		
@@ -49,20 +51,20 @@ public class MedicoController {
     
     @PostMapping("/editarMedico/{id_medico}")
     public ModelAndView modificarMedico(@PathVariable Integer id_medico, @Valid @ModelAttribute("medico") Medico medico, BindingResult result) {
-        ModelAndView vistaFormularioMedico = new ModelAndView("formMedico");
+        ModelAndView vistaFormMedico = new ModelAndView("formMedico");
         if (result.hasErrors()) {
-            vistaFormularioMedico.addObject("mensaje", "Por favor, corrija los errores a continuación");
+            vistaFormMedico.addObject("mensaje", "Por favor, corrija los errores a continuación");
         } else {
             try {
                 medico.setId_medico(id_medico);
                 medicoService.modificarMedico(medico);
-                vistaFormularioMedico.addObject("medico", medico);
-                vistaFormularioMedico.addObject("mensaje", "El médico se ha modificado exitosamente");
+                vistaFormMedico.addObject("medico", medico);
+                vistaFormMedico.addObject("mensaje", "El médico se ha modificado exitosamente");
             } catch (Exception e) {
-                vistaFormularioMedico.addObject("mensaje", "Ha ocurrido un error al modificar el médico");
+                vistaFormMedico.addObject("mensaje", "Ha ocurrido un error al modificar el médico");
             }
         }
-        return vistaFormularioMedico;
+        return vistaFormMedico;
     }
     
     @PostMapping("/eliminarMedico")

@@ -10,5 +10,6 @@ import ar.edu.unju.edm.model.Paciente;
 public interface PacienteRepository extends CrudRepository <Paciente, Integer> {
 	
 	public List<Paciente> findByEstado (Boolean estado);
+	public Paciente findByDni (Integer dni);
 	
 }
