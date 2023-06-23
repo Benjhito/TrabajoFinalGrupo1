@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
   <head>
     <meta charset="UTF-8">
-    <title>Pagina Principal</title>
-    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+    <title>Formulario Paciente</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-  <form th:object="${paciente}" th:action="@{/mostrarListaPacientes}" method="post">
-     <div class= "mb-3">
-     <label for="exampleInputEmaill" class="form-label">Paciente</label>
-     <input type="email" class="form-control" id="exampleInputEmaill" aria-describedby="emailHelp"
-     th:field="*{id_paciente}">
-     </div>
-     <div class= "mb-3">
-     <label for="exampleInputPasswordl" class="form-label">Clave</label>
-     <input type="password" class="form-control" id="exampleInputPasswordl" 
-     th:field="*{clave}">
-     </div>
-     <button type="submit" class="btn btn-primary">Ingresar</button>
-</form>
- <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" type="text/javascript"
- src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+     <!-- Cabecera - Ortiz -->
+     <header class="header">
+      <div class="container-h logo-nav-container">
+        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <div class="dropdown">
+              <li><a href="#">Formularios</a></li>
+              <div class="dropdown-content">
+                <a href="/formMedico">Medicos</a>
+                <a href="/formPaciente">Pacientes</a>
+                <a href="/formServicio">Servicio</a>
+                <a href="/formEspecialidad">Especialidad</a>
+              </div>
+            </div>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="form-container">
+      <img src="img/medico.jpg" alt="">
+      <div class="main-text">
+        <div class="main-title">
+          ¡BIENVENIDO A UMBRELLA'S HOSPITAL!
+        </div>
+        <div class="main-desc">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        </div>
+        <ul>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+          <li><p></p></li>
+        </ul>
+      </div>
+    </div>
+
   </body>
 </html>

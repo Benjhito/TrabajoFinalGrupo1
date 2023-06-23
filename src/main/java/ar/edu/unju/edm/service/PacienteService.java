@@ -7,12 +7,9 @@ import ar.edu.unju.edm.model.Paciente;
 
 @Service
 public interface PacienteService {
-	// CRUD
 	public void cargarPaciente(Paciente nuevoPaciente);
-	public Paciente mostrarPaciente(Integer codigo);
+	public void eliminarPaciente(Integer codigo);
+	public Paciente mostrarUnPaciente(Integer codigo);
 	public ArrayList<Paciente> listarPacientes();
 	public void modificarPaciente(Paciente paciente);
-	public void eliminarPaciente(Integer codigo);
-	
-	public boolean existePaciente(Paciente paciente);
 }
