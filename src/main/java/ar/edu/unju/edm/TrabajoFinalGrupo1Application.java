@@ -11,7 +11,7 @@ import ar.edu.unju.edm.repository.PacienteRepository;
 
 @SpringBootApplication
 public class TrabajoFinalGrupo1Application implements CommandLineRunner {
-	// Inyeccion de Dependencias
+
 	@Autowired
 	PacienteRepository pacienteRepository;
 	@Autowired
@@ -23,16 +23,9 @@ public class TrabajoFinalGrupo1Application implements CommandLineRunner {
 		SpringApplication.run(TrabajoFinalGrupo1Application.class, args);
 	}
 
-	// Creacion de un usuario administrador 
+	
 	@Override
 	public void run(String... args) throws Exception {
-	 /*
-		Paciente paciente = new Paciente();
-	    paciente.setEmail("admin@example.com");
-	    paciente.setClave("admin123");
-	    paciente.setTipo_usuario("ADMIN");
-	    paciente.setEstado(true);
-	    pacienteService.cargarPaciente(paciente);
-	*/
+
 	}
 }
