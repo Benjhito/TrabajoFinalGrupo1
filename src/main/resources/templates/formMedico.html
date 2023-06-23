@@ -5,32 +5,65 @@
     <title>Formulario Medico</title>
   </head>
   <body>
-    <form th:object="${medico}" th:action="@{/mostrarFormMedico}" method="post">
-      <label>Codigo: </label>
-      <input type="number" th:field="*{id_medicos}">
-      <label>Nombre(s): </label>
-      <input type="text" th:field="*{nombres}">
-      <label>Apellido(s): </label>
-      <input type="text" th:field="*{apellidos}">
-      <label>DNI: </label>
-      <input type="number" th:field="*{dni}">
-      <label>e-mail: </label>
-      <input type="text" th:field="*{email}">
-      <label>Telefono: </label>
-      <input type="text" th:field="*{telefono}">
-      <label>Fecha de Nacimiento: </label>
-      <input type="date" th:field="*{fecha_nacimiento}">
-      <label>Fecha de Ingreso: </label>
-      <input type="date" th:field="*{fecha_ingreso}">
-      <label>Domicilio: </label>
-      <input type="text" th:field="*{domicilio}">
-      <!-- Transformar en Select -->
-      <label>Especialidad: </label>
-      <input type="number" th:field="*{especialidad}">
-      <!--  -->
-      <a href="/index">VOLVER</a>
-      <input type="reset" value="RESTAURAR">
-      <input type="submit" value="REGISTRAR">
-    </form>
+    <form th:object="${medico}" th:action="@{/listaMedicos}" method="post">
+      <input type="hidden" th:field="*{id_medico}">
+      <fieldset>
+        <legend>Información personal</legend>
+        <div>
+          <label for="nombres">Nombre(s): </label>
+          <input type="text" id="nombres" name="nombres" th:field="*{nombres}" th:value="${medico.nombres}" required>
+        </div>
+        <div>
+          <label for="apellidos">Apellido(s): </label>
+          <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}" th:value="${medico.apellidos}" required>
+        </div>
+        <div>
+          <label for="dni">DNI: </label>
+          <input type="number" id="dni" name="dni" th:field="*{dni}" th:value="${medico.dni}" required>
+        </div>
+        <div>
+          <label for="fecha_nacimiento">Fecha de Nacimiento: </label>
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" th:value="${medico.fecha_nacimiento}" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información de contacto</legend>
+        <div>
+          <label for="email">Correo electrónico: </label>
+          <input type="email" id="email" name="email" th:field="*{email}" th:value="${medico.email}">
+        </div>
+        <div>
+          <label for="telefono">Teléfono: </label>
+          <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" th:value="${medico.telefono}">
+        </div>
+        <div>
+          <label for="domicilio">Domicilio: </label>
+          <input type="text" id="domicilio" name="domicilio" th:field="*{domicilio}" th:value="${medico.domicilio}">
+        </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Información laboral</legend>
+          <div>
+            <label for="legajo">Legajo: </label>
+            <input type="number" id="legajo" name="legajo" th:field="*{legajo}" th:value="${medico.legajo}" required>
+          </div>
+          <div>
+            <label for="fecha_ingreso">Fecha de Ingreso: </label>
+            <input type="date" id="fecha_ingreso" name="fecha_ingreso" th:field="*{fecha_ingreso}" th:value="${medico.fecha_ingreso}" required>
+          </div>
+          <div>
+            <label for="especialidad">Especialidad: </label>
+            <select id="especialidad" name="especialidad.id" th:field="*{especialidad}">
+              <option th:each="e:${especialidades}" th:value="${e.id}" th:text="${e.nombre}" th:selected="${e.id == medico.especialidad.id}"></option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+     </form>
   </body>
 </html>

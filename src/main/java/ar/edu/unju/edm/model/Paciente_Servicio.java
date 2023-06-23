@@ -2,48 +2,37 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.validation.constraints.Positive;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
-@Component
-@Entity
+@Component @Entity
 public class Paciente_Servicio {
 	// Atributos
-	@Id
-	@Positive
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_pacienteservicio;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_paciente")
-	private Paciente paciente;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_servicio")
-	private Servicio servicio;
-	
+	@Id @Positive @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_paciente_servicio;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id_paciente")
+	private Paciente paciente;	
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id_servicio")
+	private Servicio servicio;	
 	@NotNull
 	private LocalDate fecha;
-	
 	@NotNull
 	private Boolean estado;
 	
 	// Constructores
-	public Paciente_Servicio() {
-		// TODO Auto-generated constructor stub
-	}
+	public Paciente_Servicio() {}
 
-	public Paciente_Servicio(@Positive Integer id_pacienteservicio, Paciente paciente, Servicio servicio,
+	public Paciente_Servicio(@Positive Integer id_paciente_servicio, Paciente paciente, Servicio servicio,
 			@NotNull LocalDate fecha, @NotNull Boolean estado) {
 		super();
-		this.id_pacienteservicio = id_pacienteservicio;
+		this.id_paciente_servicio = id_paciente_servicio;
 		this.paciente = paciente;
 		this.servicio = servicio;
 		this.fecha = fecha;
@@ -51,12 +40,12 @@ public class Paciente_Servicio {
 	}
 
 	// Getters y Setters
-	public Integer getId_pacienteservicio() {
-		return id_pacienteservicio;
+	public Integer getId_paciente_servicio() {
+		return id_paciente_servicio;
 	}
 
-	public void setId_pacienteservicio(Integer id_pacienteservicio) {
-		this.id_pacienteservicio = id_pacienteservicio;
+	public void setId_paciente_servicio(Integer id_paciente_servicio) {
+		this.id_paciente_servicio = id_paciente_servicio;
 	}
 
 	public Paciente getPaciente() {

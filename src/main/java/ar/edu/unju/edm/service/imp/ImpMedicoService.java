@@ -10,18 +10,57 @@ import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.MedicoService;
 import ar.edu.unju.edm.repository.MedicoRepository;
 
-@Service
-@Qualifier("servicioMedico")
+@Service @Qualifier("servicioMedico")
 public class ImpMedicoService implements MedicoService {
+	// Inyeccion de Dependencias
 	@Autowired
-	MedicoRepository medicoRepository;
+	private MedicoRepository medicoRepository;
 	
+	// CREATE
 	@Override
 	public void cargarMedico(Medico nuevoMedico) {
 		nuevoMedico.setEstado(true);
 		medicoRepository.save(nuevoMedico);
 	}
 	
+	// READ 1
+	@Override
+	public Medico mostrarMedico(Integer codigo) {
+		Optional<Medico> auxiliar = Optional.of(new Medico());
+		auxiliar = medicoRepository.findById(codigo);
+		
+		return auxiliar.get();
+	}
+	
+	// READ ALL
+	@Override
+	public ArrayList<Medico> listarMedicos() {
+		return (ArrayList<Medico>) medicoRepository.findByEstado(true);
+	}
+	
+	// UPDATE
+	public void modificarMedico(Medico medico) {
+		Optional<Medico> medicoExistente = medicoRepository.findById(medico.getId_medico());
+		
+		if (medicoExistente.isPresent()) {
+			Medico medicoActualizado = medicoExistente.get();
+			
+			medicoActualizado.setNombres(medico.getNombres());
+			medicoActualizado.setApellidos(medico.getApellidos());
+			medicoActualizado.setDni(medico.getDni());
+			medicoActualizado.setLegajo(medico.getLegajo());
+			medicoActualizado.setEmail(medico.getEmail());
+			medicoActualizado.setTelefono(medico.getTelefono());
+			medicoActualizado.setFecha_nacimiento(medico.getFecha_nacimiento().toString());
+			medicoActualizado.setFecha_ingreso(medico.getFecha_ingreso().toString());
+			medicoActualizado.setDomicilio(medico.getDomicilio());
+			medicoActualizado.setEspecialidad(medico.getEspecialidad());
+			
+			medicoRepository.save(medicoActualizado);
+		}
+	}
+	
+	// DELETE
 	@Override
 	public void eliminarMedico(Integer codigo) {
 		Optional<Medico> auxiliar = Optional.of(new Medico());
@@ -30,25 +69,10 @@ public class ImpMedicoService implements MedicoService {
 		medicoRepository.save(auxiliar.get());
 	}
 	
-	@Override
-	public Medico mostrarUnMedico(Integer codigo) {
-		Optional<Medico> auxiliar = Optional.of(new Medico());
-		auxiliar = medicoRepository.findById(codigo);
-		return auxiliar.get();
-	}
-	
-	@Override
-	public ArrayList<Medico> listarMedicos() {
-		return (ArrayList<Medico>) medicoRepository.findByEstado(true);
-	}
-	
-	@Override
-	public void eliminarTodosLosMedicos() {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public Medico modificarUnMedico(Integer codigo) {
-		return null;
+	// Busca un medico segun su DNI
+	public boolean existeMedico(Medico medico) {
+		Medico medicoExistente = medicoRepository.findByLegajo(medico.getLegajo());
+		
+		return medicoExistente != null;
 	}
 }

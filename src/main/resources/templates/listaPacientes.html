@@ -12,22 +12,38 @@
           <th>Nombres</th>
 		  <th>Apellidos</th>
 		  <th>DNI</th>
+		  <th>Obra Social</th>
 		  <th>e-mail</th>
 		  <th>Telefono</th>
 		  <th>Fecha de Nacimiento</th>
 		  <th>Domicilio</th>
+		  <th>Tipo de Usuario</th>
+		  <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="paciente : ${listaPacientes}">
-          <td th:text="${paciente.id_pacientes}"></td>
+        <tr th:each="paciente : ${listadoPacientes}">
+          <td th:text="${paciente.id_paciente}"></td>
           <td th:text="${paciente.nombres}"></td>
           <td th:text="${paciente.apellidos}"></td>
           <td th:text="${paciente.dni}"></td>
+          <td th:text="${paciente.obra_social}"></td>
           <td th:text="${paciente.email}"></td>
           <td th:text="${paciente.telefono}"></td>
           <td th:text="${paciente.fecha_nacimiento}"></td>
           <td th:text="${paciente.domicilio}"></td>
+          <td th:text="${paciente.tipo_usuario}"></td>
+
+          <td>
+            <form th:action="@{/editarPaciente/{id}(id=${paciente.id_paciente})}" method="post">
+              <button type="submit">Editar</button>
+            </form>
+  
+            <form th:action="@{/eliminarPaciente}" method="post">
+              <input type="hidden" name="id_paciente" th:value="${paciente.id_paciente}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

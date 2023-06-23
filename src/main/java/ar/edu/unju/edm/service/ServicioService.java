@@ -7,12 +7,12 @@ import ar.edu.unju.edm.model.Servicio;
 
 @Service
 public interface ServicioService {
-	// Prototipos
+	// CRUD
 	public void cargarServicio(Servicio nuevoServicio);
-	public void eliminarServicio(Integer codigo);
-	public Servicio mostrarUnServicio(Integer codigo);
+	public Servicio mostrarServicio(Integer codigo);
 	public ArrayList<Servicio> listarServicios();
-	public void modificarUnServicio(Servicio servicio);
-
+	public void modificarServicio(Servicio servicio);
+	public void eliminarServicio(Integer codigo);
+	
 	public boolean existeServicio(Servicio servicio);
 }

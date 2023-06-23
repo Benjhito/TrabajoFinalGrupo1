@@ -11,11 +11,13 @@ import ar.edu.unju.edm.model.Paciente;
 public class IndexController {
 	@Autowired
 	Paciente paciente;
-	@GetMapping("/index")
-	public ModelAndView cargarIndex() {
-		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView.addObject("paciente", paciente);
+	
+	// Carga pagina principal
+	@GetMapping({"/", "/index", "/home", "/login"})
+	public ModelAndView PagPrincipal() {
+		ModelAndView mav = new ModelAndView("index");
+		mav.addObject("paciente", paciente);
 		
-		return modelAndView;
+		return mav;
 	}
 }

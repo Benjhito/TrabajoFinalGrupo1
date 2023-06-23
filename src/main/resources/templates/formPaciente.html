@@ -5,27 +5,54 @@
     <title>Formulario Paciente</title>
   </head>
   <body>
-    <form th:object="${paciente}" th:action="@{/mostrarListaPacientes}" method="post">
-      <label>Codigo: </label>
-      <input type="number" th:field="*{id_pacientes}">
-      <label>Nombre(s): </label>
-      <input type="text" th:field="*{nombres}">
-      <label>Apellido(s): </label>
-      <input type="text" th:field="*{apellidos}">
-      <label>DNI: </label>
-      <input type="number" th:field="*{dni}">
-      <label>e-mail: </label>
-      <input type="text" th:field="*{email}">
-      <label>Telefono: </label>
-      <input type="text" th:field="*{telefono}">
-      <label>Fecha de Nacimiento: </label>
-      <input type="date" th:field="*{fecha_nacimiento}">
-      <label>Domicilio: </label>
-      <input type="text" th:field="*{domicilio}">
-      <!--  -->
-      <a href="/index">VOLVER</a>
-      <input type="reset" value="RESTAURAR">
-      <input type="submit" value="REGISTRAR">
+    <form th:action="@{/listaPacientes}" method="post">
+      <fieldset>
+        <legend>Información personal</legend>
+        <div>
+          <label for="nombres">Nombre(s):</label>
+          <input type="text" id="nombres" name="nombres" required maxlength="30">
+        </div>
+        <div>
+          <label for="apellidos">Apellido(s):</label>
+          <input type="text" id="apellidos" name="apellidos" required maxlength="30">
+        </div>
+        <div>
+          <label for="dni">DNI:</label>
+          <input type="number" id="dni" name="dni" required min="10000000" max="99999999">
+        </div>
+        <div>
+          <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        </div>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Información de contacto</legend>
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" maxlength="50">
+        </div>
+        <div>
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" maxlength="20">
+        </div>
+        <div>
+          <label for="domicilio">Domicilio:</label>
+          <input type="text" id="domicilio" name="domicilio" maxlength="50">
+        </div>
+      </fieldset>
+  
+      <fieldset>
+        <legend>Información médica</legend>
+        <div>
+          <label for="obra_social">Obra social:</label>
+          <input type="text" id="obra_social" name="obra_social" maxlength="50">
+        </div>
+      </fieldset>
+  
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
     </form>
   </body>
 </html>

@@ -12,6 +12,7 @@
           <th>Nombres</th>
 		  <th>Apellidos</th>
 		  <th>DNI</th>
+		  <th>Legajo</th>
 		  <th>e-mail</th>
 		  <th>Telefono</th>
 		  <th>Fecha de Nacimiento</th>
@@ -21,18 +22,29 @@
         </tr>
       </thead>
       <tbody>
-        <!-- listaMedicos representa una lista de objetos, quiza requiere reemplazarse en un futuro cercano. -->
-        <tr th:each="medico : ${listaMedicos}">
-          <td th:text="medico.id_medicos"></td>
-          <td th:text="medico.nombres"></td>
-          <td th:text="medico.apellidos"></td>
-          <td th:text="medico.dni"></td>
-          <td th:text="medico.email"></td>
-          <td th:text="medico.telefono"></td>
-          <td th:text="medico.fechaNacimiento"></td>
-          <td th:text="medico.fechaIngreso"></td>
-          <td th:text="medico.domicilio"></td>
-          <td th:text="medico.especialidad"></td>
+        <tr th:each="medico : ${listadoMedicos}">
+          <td th:text="${medico.id_medico}"></td>
+          <td th:text="${medico.nombres}"></td>
+          <td th:text="${medico.apellidos}"></td>
+          <td th:text="${medico.dni}"></td>
+          <td th:text="${medico.legajo}"></td>
+          <td th:text="${medico.email}"></td>
+          <td th:text="${medico.telefono}"></td>
+          <td th:text="${medico.fecha_nacimiento}"></td>
+          <td th:text="${medico.fecha_ingreso}"></td>
+          <td th:text="${medico.domicilio}"></td>
+          <td th:text="${medico.especialidad}"></td>
+  
+          <td>
+            <form th:action="@{/editarMedico/{id}(id=${medico.id_medico})}" method="post">
+              <button type="submit">Editar</button>
+            </form>
+  
+            <form th:action="@{/eliminarMedico}" method="post">
+              <input type="hidden" name="id_medico" th:value="${medico.id_medico}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -4,89 +4,59 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Component;
 import javax.persistence.Id;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
-@Component
-@Entity
+@Component @Entity
 public class Medico {
 	// Atributos
-	@Id
-	@Positive
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_medico;
-	
-	@NotBlank
-	@Size(min = 1, max = 30)
+	@Id @Positive @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_medico;	
+	@NotBlank @Size(min = 1, max = 30)
 	private String nombres;
-	
-	@NotBlank
-	@Size(min = 1, max = 30)
+	@NotBlank @Size(min = 1, max = 30)
 	private String apellidos;
-	
-	@NotBlank
-	@Size(min = 10, max = 50)
-	private String clave;
-	
-	@NotNull
-	@Min(value = 10000000)
-	@Max(value = 99999999)
+	@NotNull @Min(value = 10000000) @Max(value = 99999999)
 	private Integer dni;
-
-	@NotNull
-	@Min(value = 1)
-	@Max(value = 9999)
-	private Integer legajo;
-	
-	@Size(min = 0, max = 50)
-	@Email
-	private String email;
-	
+	@NotNull @Min(value = 1) @Max(value = 9999)
+	private Integer legajo;	
+	@Size(min = 0, max = 50) @Email
+	private String email;	
 	@Size(min = 0, max = 20)
 	private String telefono;
-	
 	@NotNull
 	private LocalDate fecha_nacimiento;
-	
 	@NotNull
 	private LocalDate fecha_ingreso;
-	
 	@Size(min = 0, max = 50)
 	private String domicilio;
-	
 	@NotNull
 	private Boolean estado;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_especialidad")
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id_especialidad")
 	private Especialidad especialidad;
 	
 	// Constructores
-	public Medico() {
-		// TODO Auto-generated constructor stub
-	}
+	public Medico() {}
 	
 	public Medico(@Positive Integer id_medico, @NotBlank @Size(min = 1, max = 30) String nombres,
-			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
-			@NotNull @Min(10000000) @Max(99999999) Integer dni, @NotNull @Min(1) @Max(9999) Integer legajo,
-			@Size(min = 0, max = 50) @Email String email, @Size(min = 0, max = 20) String telefono,
-			@NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
+			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotNull @Min(10000000) @Max(99999999) Integer dni, 
+			@NotNull @Min(1) @Max(9999) Integer legajo, @Size(min = 0, max = 50) @Email String email, 
+			@Size(min = 0, max = 20) String telefono, @NotNull String fecha_nacimiento, @NotNull String fecha_ingreso,
 			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado, Especialidad especialidad) {
 		super();
 		this.id_medico = id_medico;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.clave = clave;
 		this.dni = dni;
 		this.legajo = legajo;
 		this.email = email;
@@ -121,14 +91,6 @@ public class Medico {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
-	}
-
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
 	}
 
 	public Integer getDni() {
