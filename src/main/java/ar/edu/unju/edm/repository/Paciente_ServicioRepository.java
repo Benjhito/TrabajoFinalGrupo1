@@ -8,7 +8,6 @@ import ar.edu.unju.edm.model.Paciente_Servicio;
 
 @Repository
 public interface Paciente_ServicioRepository extends CrudRepository<Paciente_Servicio, Integer> {
-	
+	// Lista de registros activos
 	public List<Paciente_Servicio> findByEstado (Boolean estado);
-	
 }
