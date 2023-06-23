@@ -2,14 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Formulario Servicio</title>
+    <title>Umbrella's Services</title>
+    <link rel="stylesheet" href="/src/main/resources/static/bootstrap-5.3.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/styles.css">
+    <link rel="shortcut icon" href="/src/main/resources/static/img/1024px-Umbrella_Corporation_logo.svg.ico">
   </head>
   <body>
-          <form th:object="${servicio}" th:action="@{/listaServicios}" method="post">
-            <input type="hidden" th:field="*{id_servicio}">
-        <fieldset>
-        <legend>Información del servicio</legend>
-            <div>
+    <header>
+      <div class="navegador">
+        <h1><img src="/src/main/resources/static/img/1024px-Umbrella_Corporation_logo.svg.png" alt="">    Umbrella's Hospital</h1>
+        <nav>
+          <ul>
+            <a href="index.html" class="navar">Inicio</a>
+            <a href="formServicio.html" class="navar">Servicios</a>
+            <a href="#" class="navar">Medicos</a>
+            <a href="#" class="navar">Contactos</a>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="col-prod">
+        <div class="col-prod1">
+          <!-- Formulario -->
+          <form th:object="${unProducto}" th:action="@{/guardarProducto}" method="post">
+            <div class="form-group mb-3">
+              <label class="form-label">Codigo de operacion: </label> 
+              <input class="form-control" type="number" th:field="*{codigo}" required> <br>
               <label for="country" class="form-label">Selección de Servicio</label>
               <select class="form-select" id="servicio" required>
                 <option value="">Escoger...</option>
@@ -19,24 +38,61 @@
                 <option>Cuidados Paliativos</option>
                 <option>Hospitalización</option>
               </select>
-			</div>
-		<div>
-          <label for="descripcion">Descripcion: </label>
-          <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}" th:value="${servicio.descripcion}" required>
+              <br>
+              <br>
+              <label class="form-label">Costo</label>
+              <input type="number" required>
+              <br>
+              <br>
+              <label class="form-label">Descripción: </label>
+              <input type="text">
+              <br>
+              <br>
+              <label class="form-label">No soy un robot </label>
+              <input type="checkbox" required>
+              <br>
+              <br>
+              <input class="btn btn-warning" type="submit" value="INGRESAME">
+              <br>
+              <br>
+              <input class="btn btn-rest" type="reset" value="RESTAURAR">
+              <br>
+              <br>
+              <a class="vinculador" href="/index">VOLVER</a>
+            </div>
+          </form>
         </div>
-        <div>
-          <label for="costo">Costo: </label>
-          <input type="number" id="costo" name="costo" th:field="*{costo}" th:value="${servicio.costo}" required>
+      </div>
+    </div>
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-6 col-md">
+          <h5>Médicos</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Contacte con nosostros</a></li>
+            <li><a class="link-secondary" href="#">Termino  y Condiciones</a></li>
+            <li><a class="link-secondary" href="#">Politicas de Cokies</a></li>
+            <li><a class="link-secondary" href="#">Aviso Legal</a></li>
+          </ul>
         </div>
-        <div>
-          <label for="medico">Medico: </label>
-          <input type="text" id="medico" name="medico" th:field="*{medico}" th:value="${servicio.medico}" required>
+        <div class="col-6 col-md">
+          <h5>Servicios</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary" href="#">Cirugías</a></li>
+            <li><a class="link-secondary" href="#">Hospitalizaciónes</a></li>
+            <li><a class="link-secondary" href="#">Consultas Médicas</a></li>
+            <li><a class="link-secondary" href="#">Mas...</a></li>
+          </ul>
         </div>
-      </fieldset>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="col-6 col-md">
+          <h5>Atencion al Cliente</h5>
+          <ul class="list-unstyled text-small">
+            <li><p class="link-secondary" >No hay xd</p></li>
+          </ul>
         </div>
-     </form>
+      </div>
+    </footer>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" type="text/javascript"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>  -->
   </body>
 </html>
