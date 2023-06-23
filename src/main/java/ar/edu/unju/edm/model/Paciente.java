@@ -9,12 +9,12 @@ import javax.persistence.GenerationType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
-@Component
-@Entity
+@Component @Entity
 public class Paciente {
 	// Atributos
 	@Id	@Positive @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Paciente {
 	private Integer dni;
 	@Size(min = 0, max = 50)
 	private String obra_social;
-	@Size(min = 0, max = 50)
+	@Size(min = 0, max = 50) @Email
 	private String email;
 	@Size(min = 0, max = 20)
 	private String telefono;
@@ -47,8 +47,9 @@ public class Paciente {
 	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 30) String nombres,
 			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
 			@NotBlank @Min(10000000) @Max(99999999) Integer dni, @Size(min = 0, max = 50) String obra_social,
-			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono, String fecha_nacimiento,
-			@Size(min = 0, max = 50) String domicilio, @NotBlank String tipo_usuario, @NotNull Boolean estado) {
+			@Size(min = 0, max = 50) @Email String email, @Size(min = 0, max = 20) String telefono,
+			String fecha_nacimiento, @Size(min = 0, max = 50) String domicilio, @NotBlank String tipo_usuario,
+			@NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
 		this.nombres = nombres;
