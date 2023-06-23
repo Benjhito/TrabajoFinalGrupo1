@@ -25,7 +25,7 @@ public class ServicioController {
 	ServicioRepository servicioRepository;
 		
 	// Carga del formulario para Servicios
-	@GetMapping("/formServicios")
+	@GetMapping("/formServicio")
 	public ModelAndView cargarFormServicio() {
 		ModelAndView vistaFormServicio = new ModelAndView("formServicio");
 		vistaFormServicio.addObject("servicio", new Servicio());

@@ -5,13 +5,11 @@
     <title>Formulario Especialidad</title>
   </head>
   <body>
-    <form th:object="${especialidad}" th:action="@{/mostrarFormEspecialidad}" method="post">
-      <label>Id: </label>
-      <input type="number" th:field="*{id_especialidad}">
+    <form th:object="${especialidad}" th:action="@{/listaEspecialidades}" method="post">
       <label>Nombre: </label>
-      <input type="text" th:field="*{nombre}">
+      <input type="text" th:field="*{nombre}"> <br>
       <label>Descripcion: </label>
-      <input type="text" th:field="*{descripcion}">
+      <input type="text" th:field="*{descripcion}"> <br>
       <a href="/index">VOLVER</a>
       <input type="reset" value="RESTAURAR">
       <input type="submit" value="REGISTRAR">

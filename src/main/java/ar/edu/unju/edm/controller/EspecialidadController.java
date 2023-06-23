@@ -50,7 +50,7 @@ public class EspecialidadController {
 		} catch (Exception e) {
 			vistaListaEspecialidades.addObject("mensaje", "Ha ocurrido un error al cargar la pagina. ");
 		}
-		vistaListaEspecialidades.addObject("listadoEspecialidad", especialidadService.listarEspecialidades());
+		vistaListaEspecialidades.addObject("listadoEspecialidades", especialidadService.listarEspecialidades());
 		
 		return vistaListaEspecialidades;
 	}

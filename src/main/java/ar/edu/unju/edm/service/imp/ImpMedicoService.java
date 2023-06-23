@@ -51,8 +51,8 @@ public class ImpMedicoService implements MedicoService {
 			medicoActualizado.setLegajo(medico.getLegajo());
 			medicoActualizado.setEmail(medico.getEmail());
 			medicoActualizado.setTelefono(medico.getTelefono());
-			medicoActualizado.setFecha_nacimiento(medico.getFecha_nacimiento());
-			medicoActualizado.setFecha_ingreso(medico.getFecha_ingreso());
+			medicoActualizado.setFecha_nacimiento(medico.getFecha_nacimiento().toString());
+			medicoActualizado.setFecha_ingreso(medico.getFecha_ingreso().toString());
 			medicoActualizado.setDomicilio(medico.getDomicilio());
 			medicoActualizado.setEspecialidad(medico.getEspecialidad());
 			

@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Lista de Servicios</title>
+    <title>Lista de Pacientes</title>
   </head>
   <body>
     <table>
       <thead>
         <tr>
-          <th>Codigo</th>
-          <th>Consulta</th>
-          <th>Descr</th>
+          <th>ID</th>
+          <th>Descripcion</th>
+          <th>Costo</th>
+		  <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <!-- listaMedicos representa una lista de objetos, quiza requiere reemplazarse en un futuro cercano. -->
-        <tr th:each="Servicio : ${listaServicios}">
-          <td th:text="Servicio.Codigo"></td>
-          <td th:text="Servicio.Consulta""></td>
-          <td th:text="Servicio.Descr"></td>
+        <tr th:each="servicio : ${listadoServicios}">
+          <td th:text="${servicio.id_servicio}"></td>
+          <td th:text="${servicio.descripcion}"></td>
+          <td th:text="${servicio.costo}"></td>
+
+          <td>
+            <form th:action="@{/editarServicio/{id}(id=${servicio.id_servicio})}" method="post">
+              <button type="submit">Editar</button>
+            </form>
+  
+            <form th:action="@{/eliminarServicio}" method="post">
+              <input type="hidden" name="id_servicio" th:value="${servicio.id_servicio}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

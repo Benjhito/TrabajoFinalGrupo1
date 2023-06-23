@@ -34,7 +34,7 @@ public class Paciente_ServicioController {
 	}
 	
 	// Carga de la tabla con los registros de Paciente_Servicio
-	@GetMapping("/formPaciente_Servicio")
+	@GetMapping("/listaPaciente_Servicio")
 	public ModelAndView obtenerListaPaciente_Servicio() {
 		ModelAndView vistaListaPaciente_Servicio = new ModelAndView("formPaciente_Servicio");
 		vistaListaPaciente_Servicio.addObject("paciente_servicio", new Paciente_Servicio());

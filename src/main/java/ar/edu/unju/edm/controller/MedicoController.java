@@ -65,15 +65,15 @@ public class MedicoController {
         ModelAndView vistaFormMedico = new ModelAndView("formMedico");
         
         if (result.hasErrors()) {
-            vistaFormMedico.addObject("mensaje", "Por favor, corrija los errores a continuación");
+            vistaFormMedico.addObject("mensaje", "Por favor, corrija los errores a continuacion. ");
         } else {
             try {
                 medico.setId_medico(id_medico);
                 medicoService.modificarMedico(medico);
                 vistaFormMedico.addObject("medico", medico);
-                vistaFormMedico.addObject("mensaje", "El médico se ha modificado exitosamente");
+                vistaFormMedico.addObject("mensaje", "El médico se ha modificado exitosamente. ");
             } catch (Exception e) {
-                vistaFormMedico.addObject("mensaje", "Ha ocurrido un error al modificar el médico");
+                vistaFormMedico.addObject("mensaje", "Ha ocurrido un error al modificar el médico. ");
             }
         
         }

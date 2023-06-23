@@ -57,7 +57,7 @@ public class ImpPacienteService implements PacienteService {
 			pacienteActualizado.setDni(paciente.getDni());
 			pacienteActualizado.setEmail(paciente.getEmail());
 			pacienteActualizado.setTelefono(paciente.getTelefono());
-			pacienteActualizado.setFecha_nacimiento(paciente.getFecha_nacimiento());
+			pacienteActualizado.setFecha_nacimiento(paciente.getFecha_nacimiento().toString());
 			pacienteActualizado.setDomicilio(paciente.getDomicilio());
 			
 			pacienteRepository.save(pacienteActualizado);
