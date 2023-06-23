@@ -51,7 +51,7 @@ public class Paciente_ServicioController {
 		} catch (Exception e) {
 			vistaListaPaciente_Servicio.addObject("mensaje", "Ha ocurrido un error cargando la pagina. ");
 		}
-		vistaListaPaciente_Servicio.addObject("listadoPaciente_Servicio", paciente_servicioService.listarRegistros());
+		vistaListaPaciente_Servicio.addObject("listadoPaciente_Servicio", paciente_servicioService.listarPaciente_Servicio());
 		
 		return vistaListaPaciente_Servicio;
 	}
@@ -84,7 +84,7 @@ public class Paciente_ServicioController {
 		ModelAndView vistaListaPaciente_Servicio = new ModelAndView("listaPaciente_Servicio");
 		
 		paciente_servicioService.eliminarPaciente_Servicio(id_paciente_servicio);
-		vistaListaPaciente_Servicio.addObject("listadoPaciente_Servicio", paciente_servicioService.listarRegistros());
+		vistaListaPaciente_Servicio.addObject("listadoPaciente_Servicio", paciente_servicioService.listarPaciente_Servicio());
 		
 		return vistaListaPaciente_Servicio;
 	}

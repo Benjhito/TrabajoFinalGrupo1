@@ -10,7 +10,7 @@ public interface Paciente_ServicioService {
 	// CRUD
 	public void cargarPaciente_Servicio(Paciente_Servicio nuevoPaciente_Servicio);
 	public Paciente_Servicio mostrarPaciente_Servicio(Integer codigo);
-	public ArrayList<Paciente_Servicio> listarPaciente_Servicios();
+	public ArrayList<Paciente_Servicio> listarPaciente_Servicio();
 	public void modificarPaciente_Servicio(Paciente_Servicio paciente_servicio);
 	public void eliminarPaciente_Servicio(Integer codigo);
 }

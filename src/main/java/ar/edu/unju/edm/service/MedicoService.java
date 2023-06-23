@@ -8,7 +8,7 @@ import ar.edu.unju.edm.model.Medico;
 @Service
 public interface MedicoService {
 	// CRUD
-	public void cargarPaciente(Medico nuevoMedico);
+	public void cargarMedico(Medico nuevoMedico);
 	public Medico mostrarMedico(Integer codigo);
 	public ArrayList<Medico> listarMedicos();
 	public void modificarMedico(Medico medico);

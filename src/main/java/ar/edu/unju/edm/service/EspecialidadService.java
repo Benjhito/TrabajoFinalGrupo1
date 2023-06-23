@@ -10,7 +10,7 @@ public interface EspecialidadService {
 	// CRUD
 	public void cargarEspecialidad(Especialidad nuevaEspecialidad);
 	public Especialidad mostrarEspecialidad(Integer codigo);
-	public ArrayList<Especialidad> listarEspecialidads();
+	public ArrayList<Especialidad> listarEspecialidades();
 	public void modificarEspecialidad(Especialidad especialidad);
 	public void eliminarEspecialidad(Integer codigo);
 	
