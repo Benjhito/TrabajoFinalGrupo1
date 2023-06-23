@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import ar.edu.unju.edm.model.Paciente;
 import ar.edu.unju.edm.service.PacienteService;
 import ar.edu.unju.edm.repository.PacienteRepository;
-import ar.edu.unju.edm.repository.EspecialidadRepository;
 
 @Controller
 public class PacienteController {
@@ -25,7 +24,6 @@ public class PacienteController {
     @Autowired
     PacienteRepository pacienteRepository;
     @Autowired
-    EspecialidadRepository especialidadRepository;
 
     @GetMapping("/formPaciente")
     public ModelAndView cargarFormPaciente() {
@@ -34,7 +32,7 @@ public class PacienteController {
         return vistaFormPaciente;
     }
     
-    @PostMapping("/listaPacientes")
+    @PostMapping("/mostrarListaPacientes")
 	public ModelAndView mostrarListaPacientes(@ModelAttribute("paciente") Paciente nuevoPaciente) {
 		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");
 		try {

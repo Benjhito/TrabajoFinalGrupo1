@@ -57,6 +57,8 @@ body{
   }
 
   .content-table { 
+    text-align: center;
+    margin: 0 auto;
     border-collapse: collapse; 
     margin-top: 2%;
     font-size: 1em; 
@@ -68,7 +70,6 @@ body{
   .content-table thead tr { 
     background-color: #88db80; 
     color: #ffffff; 
-    text-align: center; 
 
   }
 
