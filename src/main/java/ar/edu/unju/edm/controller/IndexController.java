@@ -10,12 +10,13 @@ import ar.edu.unju.edm.model.Paciente;
 @Controller
 public class IndexController {
 	@Autowired
-	Paciente usuario;
+	Paciente paciente;
 	
-	@GetMapping({"/", "/index", "/home"})
+	// Carga pagina principal
+	@GetMapping({"/", "/index", "/home", "/login"})
 	public ModelAndView PagPrincipal() {
 		ModelAndView mav = new ModelAndView("index");
-		mav.addObject("usuario", usuario);
+		mav.addObject("paciente", paciente);
 		
 		return mav;
 	}

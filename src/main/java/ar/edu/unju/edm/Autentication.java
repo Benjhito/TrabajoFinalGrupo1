@@ -36,7 +36,7 @@ public class Autentication implements AuthenticationSuccessHandler {
 		}
 		
 		if (tipoUsuario) {
-			redirectStrategy.sendRedirect(request, response, "/home");
+			redirectStrategy.sendRedirect(request, response, "/index");
 		} else {
 			if (tipoAdmin) {
 				redirectStrategy.sendRedirect(request, response, "/formMedico");

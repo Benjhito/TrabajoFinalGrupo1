@@ -30,13 +30,13 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter {
 				.loginPage("/login")
 				.permitAll()
 				.successHandler(autenticacion)
-				.failureUrl("/login?error=true")
+				.failureUrl("/index")
 				.usernameParameter("email")
 				.passwordParameter("clave")
 				.and()
 			.logout()
 				.permitAll()
-				.logoutSuccessUrl("/home");
+				.logoutSuccessUrl("/home");  
 	}
 	
 	BCryptPasswordEncoder bCryptPasswordEncoder;

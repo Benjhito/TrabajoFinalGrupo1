@@ -26,7 +26,7 @@ public class PacienteController {
 	
 	// Carga del formulario para Pacientes
 	@GetMapping("/formPaciente")
-	public ModelAndView cargarFormpaciente() {
+	public ModelAndView cargarFormPaciente() {
 		ModelAndView vistaFormPaciente = new ModelAndView("formPaciente");
 		vistaFormPaciente.addObject("paciente", new Paciente());
 		
@@ -34,6 +34,13 @@ public class PacienteController {
 	}
 	
 	// Carga de la tabla con los registros de Pacientes
+	@GetMapping("/listaPacientes")
+	public ModelAndView obtenerListaPacientes() {
+		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");
+		
+		return vistaListaPacientes;
+	}
+	
 	@PostMapping("/listaPacientes")
 	public ModelAndView mostrarListaPacientes(@ModelAttribute("paciente") Paciente nuevoPaciente) {
 		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");
@@ -41,17 +48,17 @@ public class PacienteController {
 		try {
 			pacienteService.cargarPaciente(nuevoPaciente);
 		} catch (Exception e) {
-			vistaListaPacientes.addObject("mensaje", "Ha ocurrido un error al cargar la página. ");
+			vistaListaPacientes.addObject("mensaje", "Ha ocurrido un error al cargar la pagina. ");
 		}
-		vistaListaPacientes.addObject("listaMedicos", pacienteService.listarPacientes());
+		vistaListaPacientes.addObject("listadoPacientes", pacienteService.listarPacientes());
 		
 		return vistaListaPacientes;
 	}
 	
-	// Carga del formulario Pacientes para modificar datos
+	// Carga del formulario Paciente para modificar datos
 	@PostMapping("/editarPaciente/{id_paciente}")
 	public ModelAndView modificarPaciente(@PathVariable Integer id_paciente, 
-		@Valid @ModelAttribute("paciente") Paciente paciente, BindingResult result) {
+			@Valid @ModelAttribute("paciente") Paciente paciente, BindingResult result) {
 		ModelAndView vistaFormPaciente = new ModelAndView("formPaciente");
 		
 		if (result.hasErrors()) {
@@ -76,7 +83,7 @@ public class PacienteController {
 		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");
 		
 		pacienteService.eliminarPaciente(id_paciente);
-		vistaListaPacientes.addObject("listaPaciente", pacienteService.listarPacientes());
+		vistaListaPacientes.addObject("listadoPacientes", pacienteService.listarPacientes());
 		vistaListaPacientes.addObject("mensaje", "El paciente se ha eliminado con exito. ");
 		
 		return vistaListaPacientes;

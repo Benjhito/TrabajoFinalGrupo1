@@ -5,12 +5,12 @@
     <title>Pagina Principal</title>
   </head>
   <body>
-  	<button th:action="@{/login}">Log In</button>
-	<form th:object="${usuario}" th:action="@{/home}" method="post">
+	<form th:object="${paciente}" th:action="@{/login}" method="post">
 	  <label for="email">Correo Electronico: </label>
-	  <input type="text" id="email" name="email" th:field="*{email}" th:value="${paciente.email}" required> <br>
+	  <input type="text" id="email" name="email" th:field="*{email}" required> <br>
 	  <label for="clave">Password: </label>
-	  <input type="text" id="clave" name="clave" th:field="*{clave}" required> <br>
+	  <input type="password" id="clave" name="clave" th:field="*{clave}" required> <br>
+	  <input type="submit" value="INGRESAR">
 	</form>
   </body>
 </html>
