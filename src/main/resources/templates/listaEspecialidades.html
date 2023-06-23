@@ -18,6 +18,17 @@
           <td th:text="especialidad.id_especialidad"></td>
           <td th:text="especialidad.nombre"></td>
           <td th:text="especialidad.descripcion"></td>
+     
+          <td>
+            <form th:action="@{/editarEspecialidad/{id}(id=${especialidad.id_especialidad})}" method="post">
+              <button type="submit">Editar</button>
+            </form>
+  
+            <form th:action="@{/eliminarEspecialidad}" method="post">
+              <input type="hidden" name="id_especialidad" th:value="${especialidad.id_especialidad}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

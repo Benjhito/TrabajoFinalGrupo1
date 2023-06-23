@@ -19,6 +19,10 @@ public class ImpPacienteService implements PacienteService {
 	@Override
 	public void cargarPaciente(Paciente nuevoPaciente) {
 		nuevoPaciente.setEstado(true);
+		nuevoPaciente.setTipo("USUARIO");
+		String pw = nuevoPaciente.getClave();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+		nuevoPaciente.setClave(encoder.encode(pw));
 		pacienteRepository.save(nuevoPaciente);
 	}
 	

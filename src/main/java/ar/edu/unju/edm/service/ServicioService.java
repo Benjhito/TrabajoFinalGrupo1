@@ -11,7 +11,8 @@ public interface ServicioService {
 	public void cargarServicio(Servicio nuevoServicio);
 	public void eliminarServicio(Integer codigo);
 	public Servicio mostrarUnServicio(Integer codigo);
-	public ArrayList<Servicio> listarServicio();
-	public void eliminarTodosLosServicio();
-	public Servicio modificarUnServicio(Integer codigo);
+	public ArrayList<Servicio> listarServicios();
+	public void modificarUnServicio(Servicio servicio);
+
+	public boolean existeServicio(Servicio servicio);
 }

@@ -42,13 +42,25 @@ public class ImpPaciente_ServicioService implements Paciente_ServicioService {
 		return (ArrayList<Paciente_Servicio>) paciente_servicioRepository.findByEstado(true);
 	}
 	
+	
 	@Override
-	public void eliminarTodosLosRegistros() {
-		// TODO Auto-generated method stub
+	public void modificarPaciente_Servicio(Paciente_Servicio paciente_servicio) {
+		  Optional<Paciente_Servicio> paciente_servicioExistente=paciente_servicioRepository.findById(paciente_servicio.getId_pacienteservicio());
+		    if (paciente_servicioExistente.isPresent()) {
+		        Paciente_Servicio paciente_servicioActualizado = paciente_servicioExistente.get();
+		        paciente_servicioActualizado.setPaciente(paciente_servicio.getPaciente());
+		        paciente_servicioActualizado.setFecha(paciente_servicio.getFecha());
+		        paciente_servicioActualizado.setEstado(paciente_servicio.getEstado());
+		        paciente_servicioActualizado.setServicio(paciente_servicio.getServicio());
+		        paciente_servicioRepository.save(paciente_servicioActualizado);
+		    } else {
+		        // TODO Handle Exception
+		    }
 	}
 	
 	@Override
-	public Paciente_Servicio modificarPaciente_Servicio(Integer codigo) {
-		return null;
+	public boolean existePaciente_Servicio(Paciente_Servicio paciente_servicio) {
+		Paciente_Servicio paciente_servicioExistente = paciente_servicioRepository.findByFecha(paciente_servicio.getFecha());
+		return paciente_servicioExistente != null;
 	}
 }
