@@ -10,5 +10,5 @@ import ar.edu.unju.edm.model.Servicio;
 public interface ServicioRepository extends CrudRepository <Servicio, Integer> {
 	
 	public List<Servicio> findByEstado (Boolean estado);
-	
+	public Servicio findByDescripcion (String descripcion);
 }

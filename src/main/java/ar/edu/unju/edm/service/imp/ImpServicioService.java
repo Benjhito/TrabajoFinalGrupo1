@@ -11,9 +11,8 @@ import ar.edu.unju.edm.service.ServicioService;
 import ar.edu.unju.edm.repository.ServicioRepository;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("servicioServicio")
 public class ImpServicioService implements ServicioService {
-
 	@Autowired
 	ServicioRepository servicioRepository;
 	
@@ -39,17 +38,28 @@ public class ImpServicioService implements ServicioService {
 	}
 	
 	@Override
-	public ArrayList<Servicio> listarServicio() {
+	public ArrayList<Servicio> listarServicios() {
 		return (ArrayList<Servicio>) servicioRepository.findByEstado(true);
 	}
 	
 	@Override
-	public void eliminarTodosLosServicio() {
-		// TODO Auto-generated method stub
+	public void modificarUnServicio(Servicio servicio) {
+		   Optional<Servicio> servicioExistente = servicioRepository.findById(servicio.getId_servicio());
+		    if (servicioExistente.isPresent()) {
+		        Servicio servicioActualizado = servicioExistente.get();
+		        servicioActualizado.setDescripcion(servicio.getDescripcion());
+		        servicioActualizado.setCosto(servicio.getCosto());
+		        servicioActualizado.setEstado(servicio.getEstado());
+		        servicioActualizado.setMedico(servicio.getMedico());
+		        servicioRepository.save(servicioActualizado);
+		    } else {
+		        // TODO Handle Exception
+		    }
 	}
-	
+
 	@Override
-	public Servicio modificarUnServicio(Integer codigo) {
-		return null;
+	public boolean existeServicio(Servicio servicio) {
+		Servicio servicioExistente = servicioRepository.findByDescripcion(servicio.getDescripcion());
+		return servicioExistente != null;
 	}
 }
