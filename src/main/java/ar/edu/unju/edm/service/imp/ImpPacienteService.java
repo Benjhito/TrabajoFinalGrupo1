@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.model.Paciente;
 import ar.edu.unju.edm.service.PacienteService;
 import ar.edu.unju.edm.repository.PacienteRepository;

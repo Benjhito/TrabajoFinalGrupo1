@@ -12,6 +12,4 @@ public interface PacienteService {
 	public Paciente mostrarUnPaciente(Integer codigo);
 	public ArrayList<Paciente> listarPacientes();
 	public void modificarPaciente(Paciente paciente);
-	
-	public boolean existePaciente(Paciente paciente);
 }
