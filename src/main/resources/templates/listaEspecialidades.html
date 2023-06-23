@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Lista de Pacientes</title>
+    <title>Lista de Especialidades</title>
   </head>
   <body>
     <table>
@@ -10,16 +10,15 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Descripcion</th>
-		  <th>Acciones</th>
+		  <th>Descripcion</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="especialidad : ${listadoEspecialidades}">
-          <td th:text="${especialidad.id_especialidad}"></td>
-          <td th:text="${especialidad.nombre}"></td>
-          <td th:text="${especialidad.descripcion}"></td>
-
+        <tr th:each="especialidad : ${listaEspecialidades}">
+          <td th:text="especialidad.id_especialidad"></td>
+          <td th:text="especialidad.nombre"></td>
+          <td th:text="especialidad.descripcion"></td>
+     
           <td>
             <form th:action="@{/editarEspecialidad/{id}(id=${especialidad.id_especialidad})}" method="post">
               <button type="submit">Editar</button>
