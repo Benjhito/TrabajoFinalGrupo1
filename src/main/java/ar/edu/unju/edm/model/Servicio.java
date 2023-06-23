@@ -1,47 +1,35 @@
 package ar.edu.unju.edm.model;
 
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
-@Component
-@Entity
+@Component @Entity
 public class Servicio {
 	// Atributos
-    @Id
-    @Positive
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @Positive @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_servicio;
-    
-    @NotBlank
-    @Size(min = 0, max = 50)
+    @NotBlank @Size(min = 0, max = 50)
     private String descripcion;
-    
-    @NotNull
-    @Min(value = 0)
+    @NotNull @Min(value = 0)
     private Float costo;
-	
     @NotNull
     private Boolean estado;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_medico")
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "id_medico")
     private Medico medico;
     
     // Constructores
-    public Servicio() {
-		// TODO Auto-generated constructor stub
-	}
+    public Servicio() {}
 
 	public Servicio(@Positive Integer id_servicio, @NotBlank @Size(min = 0, max = 50) String descripcion,
 			@NotNull @Min(0) Float costo, @NotNull Boolean estado, Medico medico) {

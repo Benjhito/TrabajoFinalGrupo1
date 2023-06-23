@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de Paciente_Servicio</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Paciente</th>
+		  <th>Servicio</th>
+		  <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="paciente_servicio : ${listaPacientes_Servicios}">
+          <td th:text="${paciente_servicio.id_pacienteservicio}"></td>
+          <td th:text="${paciente_servicio.paciente}"></td>
+          <td th:text="${paciente_servicio.servicio}"></td>
+          <td th:text="${paciente_servicio.fecha}"></td>
+        
+          <td>
+            <form th:action="@{/editarPaciente_Servicio/{id}(id=${paciente_servicio.id_pacienteservicio})}" method="post">
+              <button type="submit">Editar</button>
+            </form>
+  
+            <form th:action="@{/eliminarPaciente_Servicio}" method="post">
+              <input type="hidden" name="id_pacienteservicio" th:value="${paciente_servicio.id_pacienteservicio}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

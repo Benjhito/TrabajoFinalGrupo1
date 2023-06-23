@@ -7,11 +7,12 @@ import ar.edu.unju.edm.model.Especialidad;
 
 @Service
 public interface EspecialidadService {
-	// Prototipos
-	public void cargarEspecialidad (Especialidad nuevoEspecialidad);
-	public void eliminarEspecialidad(Integer codigo);
-	public Especialidad mostrarUnaEspecialidad(Integer codigo);
+	// CRUD
+	public void cargarEspecialidad(Especialidad nuevaEspecialidad);
+	public Especialidad mostrarEspecialidad(Integer codigo);
 	public ArrayList<Especialidad> listarEspecialidades();
-	public void eliminarTodasLasEspecialidades();
-	public Especialidad modificarUnaEspecialidad(Integer codigo);
+	public void modificarEspecialidad(Especialidad especialidad);
+	public void eliminarEspecialidad(Integer codigo);
+	
+	public boolean existeEspecialidad(Especialidad especialidad);
 }
