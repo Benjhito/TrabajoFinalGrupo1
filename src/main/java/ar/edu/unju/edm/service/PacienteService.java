@@ -7,11 +7,11 @@ import ar.edu.unju.edm.model.Paciente;
 
 @Service
 public interface PacienteService {
-	// Prototipos
 	public void cargarPaciente(Paciente nuevoPaciente);
 	public void eliminarPaciente(Integer codigo);
 	public Paciente mostrarUnPaciente(Integer codigo);
 	public ArrayList<Paciente> listarPacientes();
-	public void eliminarTodosLosPacientes();
-	public Paciente modificarUnPaciente(Integer codigo);
+	public void modificarPaciente(Paciente paciente);
+	
+	public boolean existePaciente(Paciente paciente);
 }

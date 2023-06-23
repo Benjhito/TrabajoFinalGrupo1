@@ -3,36 +3,76 @@
   <head>
     <meta charset="UTF-8">
     <title>Lista de Medicos</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <table>
+     <!-- Cabecera - Ortiz -->
+     <header class="header">
+      <div class="container-h logo-nav-container">
+        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <div class="dropdown">
+              <li><a href="#">Formularios</a></li>
+              <div class="dropdown-content">
+                <a href="/formMedico">Medicos</a>
+                <a href="/formPaciente">Pacientes</a>
+                <a href="/formServicio">Servicio</a>
+                <a href="/formEspecialidad">Especialidad</a>
+              </div>
+            </div>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+  <body>
+    <div class="button-back">
+      <a title="Volver" href="/formMedico"><img src="img/back.png" alt="back" height ="20" width="22"  /></a>
+    </div>
+    <table class="content-table">
       <thead>
         <tr>
           <th>ID</th>
           <th>Nombres</th>
 		  <th>Apellidos</th>
 		  <th>DNI</th>
+		  <th>Legajo</th>
 		  <th>e-mail</th>
 		  <th>Telefono</th>
 		  <th>Fecha de Nacimiento</th>
 		  <th>Fecha de Ingreso</th>
 		  <th>Domicilio</th>
 		  <th>Especialidad</th>
+      <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <!-- listaMedicos representa una lista de objetos, quiza requiere reemplazarse en un futuro cercano. -->
         <tr th:each="medico : ${listaMedicos}">
-          <td th:text="medico.id_medicos"></td>
-          <td th:text="medico.nombres"></td>
-          <td th:text="medico.apellidos"></td>
-          <td th:text="medico.dni"></td>
-          <td th:text="medico.email"></td>
-          <td th:text="medico.telefono"></td>
-          <td th:text="medico.fechaNacimiento"></td>
-          <td th:text="medico.fechaIngreso"></td>
-          <td th:text="medico.domicilio"></td>
-          <td th:text="medico.especialidad"></td>
+          <td th:text="${medico.id_medico}"></td>
+          <td th:text="${medico.nombres}"></td>
+          <td th:text="${medico.apellidos}"></td>
+          <td th:text="${medico.dni}"></td>
+          <td th:text="${medico.legajo}"></td>
+          <td th:text="${medico.email}"></td>
+          <td th:text="${medico.telefono}"></td>
+          <td th:text="${medico.fecha_nacimiento}"></td>
+          <td th:text="${medico.fecha_ingreso}"></td>
+          <td th:text="${medico.domicilio}"></td>
+          <td th:text="${medico.especialidad}"></td>
+  
+          <td>
+            <form th:action="@{/editarMedico/{id}(id=${medico.id_medico})}" method="post">
+              <button type="submit"> <img src="img/pencil.png" height ="12" width="15" /></button>
+            </form>
+  
+            <form th:action="@{/eliminarMedico}" method="post">
+              <input type="hidden" name="id_medico" th:value="${medico.id_medico}">
+              <button type="submit"> <img src="img/basura.png" height ="12" width="15" /></button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

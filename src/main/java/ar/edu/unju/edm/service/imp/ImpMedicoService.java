@@ -14,7 +14,7 @@ import ar.edu.unju.edm.repository.MedicoRepository;
 @Qualifier("servicioMedico")
 public class ImpMedicoService implements MedicoService {
 	@Autowired
-	MedicoRepository medicoRepository;
+	private MedicoRepository medicoRepository;
 	
 	@Override
 	public void cargarMedico(Medico nuevoMedico) {
@@ -43,12 +43,30 @@ public class ImpMedicoService implements MedicoService {
 	}
 	
 	@Override
-	public void eliminarTodosLosMedicos() {
-		// TODO Auto-generated method stub
+	public void modificarMedico(Medico medico) {
+	    Optional<Medico> medicoExistente = medicoRepository.findById(medico.getId_medico());
+	    if (medicoExistente.isPresent()) {
+	        Medico medicoActualizado = medicoExistente.get();
+	        medicoActualizado.setNombres(medico.getNombres());
+	        medicoActualizado.setApellidos(medico.getApellidos());
+	        medicoActualizado.setDni(medico.getDni());
+	        medicoActualizado.setLegajo(medico.getLegajo());
+	        medicoActualizado.setEmail(medico.getEmail());
+	        medicoActualizado.setTelefono(medico.getTelefono());
+	        medicoActualizado.setFecha_nacimiento(medico.getFecha_nacimiento());
+	        medicoActualizado.setFecha_ingreso(medico.getFecha_ingreso());
+	        medicoActualizado.setDomicilio(medico.getDomicilio());
+	        medicoActualizado.setEstado(medico.getEstado());
+	        medicoActualizado.setEspecialidad(medico.getEspecialidad());
+	        medicoRepository.save(medicoActualizado);
+	    } else {
+	        // TODO Handle Exception
+	    }
 	}
 	
 	@Override
-	public Medico modificarUnMedico(Integer codigo) {
-		return null;
+	public boolean existeMedico(Medico medico) {
+		Medico medicoExistente = medicoRepository.findByLegajo(medico.getLegajo());
+		return medicoExistente != null;
 	}
 }

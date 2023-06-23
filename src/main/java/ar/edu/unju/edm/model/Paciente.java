@@ -48,6 +48,7 @@ public class Paciente {
 	@Size(min = 0, max = 20)
 	private String telefono;
 	
+	@NotNull
 	private LocalDate fecha_nacimiento;
 	
 	@Size(min = 0, max = 50)
@@ -64,7 +65,7 @@ public class Paciente {
 	public Paciente(@Positive Integer id_paciente, @NotBlank @Size(min = 1, max = 30) String nombres,
 			@NotBlank @Size(min = 1, max = 30) String apellidos, @NotBlank @Size(min = 10, max = 50) String clave,
 			@NotBlank @Min(10000000) @Max(99999999) Integer dni, @Size(min = 0, max = 50) String obra_social,
-			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono, String fecha_nacimiento,
+			@Size(min = 0, max = 50) String email, @Size(min = 0, max = 20) String telefono, @NotNull String fecha_nacimiento,
 			@Size(min = 0, max = 50) String domicilio, @NotNull Boolean estado) {
 		super();
 		this.id_paciente = id_paciente;
@@ -151,6 +152,10 @@ public class Paciente {
 
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
+	}
+	
+	public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
 	public String getDomicilio() {

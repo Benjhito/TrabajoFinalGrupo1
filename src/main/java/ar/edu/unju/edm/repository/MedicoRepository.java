@@ -10,5 +10,6 @@ import ar.edu.unju.edm.model.Medico;
 public interface MedicoRepository extends CrudRepository <Medico, Integer> {
 	
 	public List<Medico> findByEstado (Boolean estado);
+	public Medico findByLegajo(Integer legajo);
 	
 }
