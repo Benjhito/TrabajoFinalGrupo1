@@ -14,8 +14,7 @@ import javax.validation.Valid;
 
 import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.MedicoService;
-import ar.edu.unju.edm.repository.MedicoRepository;
-import ar.edu.unju.edm.repository.EspecialidadRepository;
+import ar.edu.unju.edm.service.EspecialidadService;
 
 @Controller
 public class MedicoController {
@@ -23,9 +22,7 @@ public class MedicoController {
     @Autowired @Qualifier("servicioMedico")
     MedicoService medicoService;
     @Autowired
-    MedicoRepository medicoRepository;
-    @Autowired
-    EspecialidadRepository especialidadRepository;
+    EspecialidadService especialidadService;
 
     // Carga del formulario para Medicos
     @GetMapping("/formMedico")
@@ -55,6 +52,7 @@ public class MedicoController {
 			vistaListaMedicos.addObject("mensaje", "Ha ocurrido un error cargando la pagina. ");
 		}
 		vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
+		vistaListaMedicos.addObject("listadoEspecialidades", especialidadService.listarEspecialidades());
 		
 		return vistaListaMedicos;
 	}

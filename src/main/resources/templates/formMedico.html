@@ -82,7 +82,7 @@
             <div>
               <label for="especialidad">Especialidad: </label>
               <select id="especialidad" name="especialidad.id" th:field="*{especialidad}">
-                <option th:each="e:${especialidades}" th:value="${e.id}" th:text="${e.nombre}" th:selected="${e.id == medico.especialidad.id}"></option>
+                <option th:each="especialidad:${listadoEspecialidades}" th:value="${especialidad.id}" th:text="${especialidad.nombre}" th:selected="${especialidad.id == medico.especialidad.id}"></option>
               </select>
             </div>
           </fieldset>

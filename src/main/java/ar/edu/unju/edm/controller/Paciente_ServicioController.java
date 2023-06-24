@@ -14,15 +14,12 @@ import javax.validation.Valid;
 
 import ar.edu.unju.edm.model.Paciente_Servicio;
 import ar.edu.unju.edm.service.Paciente_ServicioService;
-import ar.edu.unju.edm.repository.Paciente_ServicioRepository;
 
 @Controller
 public class Paciente_ServicioController {
 	// Inyeccion de Dependencias
 	@Autowired @Qualifier("servicioPaciente_Servicio")
 	Paciente_ServicioService paciente_servicioService;
-	@Autowired
-	Paciente_ServicioRepository paciente_servicioRepository;
 	
 	// Carga del formulario para Paciente_Servicio
 	@GetMapping("/formPaciente_Servicio")

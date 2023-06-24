@@ -36,12 +36,13 @@
           <tr>
             <th>ID</th>
             <th>Nombres</th>
-        <th>Apellidos</th>
-        <th>DNI</th>
-        <th>e-mail</th>
-        <th>Telefono</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Domicilio</th>
+        	<th>Apellidos</th>
+            <th>DNI</th>
+            <th>Obra Social</th>
+            <th>e-mail</th>
+            <th>Telefono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Domicilio</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@
             <td th:text="${paciente.nombres}"></td>
             <td th:text="${paciente.apellidos}"></td>
             <td th:text="${paciente.dni}"></td>
+            <td th:text="${paciente.obra_social}"></td>
             <td th:text="${paciente.email}"></td>
             <td th:text="${paciente.telefono}"></td>
             <td th:text="${paciente.fecha_nacimiento}"></td>

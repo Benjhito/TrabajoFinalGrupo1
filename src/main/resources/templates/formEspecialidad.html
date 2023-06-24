@@ -31,9 +31,8 @@
   <body>
 
     <div class="form-container">
-      <form th:object="${especialidad}" th:action="@{/mostrarFormEspecialidad}" method="post">
-        <label>Id: </label>
-        <input type="number" th:field="*{id_especialidad}">
+      <form th:object="${especialidad}" th:action="@{/listaEspecialidades}" method="post">
+        <input type="hidden" th:field="*{id_especialidad}">
         <label>Nombre: </label>
         <input type="text" th:field="*{nombre}">
         <label>Descripcion: </label>

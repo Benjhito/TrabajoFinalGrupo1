@@ -3,6 +3,7 @@ package ar.edu.unju.edm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unju.edm.model.Paciente;
@@ -32,8 +33,13 @@ public class TrabajoFinalGrupo1Application implements CommandLineRunner {
         Paciente paciente = new Paciente();
         paciente.setEmail("admin@example.com");
         paciente.setClave("admin123");
+        paciente.setDni("10000000")
         paciente.setTipo_usuario("ADMIN");
         paciente.setEstado(true);
+        
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+		paciente.setClave(encoder.encode(pw));
+        
         pacienteService.cargarPaciente(paciente);
         */
     }

@@ -15,9 +15,9 @@
       </thead>
       <tbody>
         <tr th:each="especialidad : ${listadoEspecialidades}">
-          <td th:text="especialidad.id_especialidad"></td>
-          <td th:text="especialidad.nombre"></td>
-          <td th:text="especialidad.descripcion"></td>
+          <td th:text="${especialidad.id_especialidad}"></td>
+          <td th:text="${especialidad.nombre}"></td>
+          <td th:text="${especialidad.descripcion}"></td>
      
           <td>
             <form th:action="@{/editarEspecialidad/{id}(id=${especialidad.id_especialidad})}" method="post">

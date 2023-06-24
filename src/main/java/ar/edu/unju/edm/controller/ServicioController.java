@@ -14,15 +14,12 @@ import javax.validation.Valid;
 
 import ar.edu.unju.edm.model.Servicio;
 import ar.edu.unju.edm.service.ServicioService;
-import ar.edu.unju.edm.repository.ServicioRepository;
 
 @Controller
 public class ServicioController {
 	// Inyeccion de Dependencias
 	@Autowired @Qualifier("servicioServicio")
 	ServicioService servicioService;
-	@Autowired
-	ServicioRepository servicioRepository;
 		
 	// Carga del formulario para Servicios
 	@GetMapping("/formServicio")
@@ -37,6 +34,7 @@ public class ServicioController {
 	@GetMapping("/listaServicios")
 	public ModelAndView obtenerListaServicios() {
 		ModelAndView vistaListaServicios = new ModelAndView("listaServicios");
+		vistaListaServicios.addObject("listadoServicios", servicioService.listarServicios());
 		
 		return vistaListaServicios;
 	}

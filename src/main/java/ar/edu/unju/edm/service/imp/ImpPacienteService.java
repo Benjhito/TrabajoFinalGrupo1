@@ -22,7 +22,7 @@ public class ImpPacienteService implements PacienteService {
 	public void cargarPaciente(Paciente nuevoPaciente) {
 		if (!existePaciente(nuevoPaciente)) {
 			nuevoPaciente.setEstado(true);
-			nuevoPaciente.setTipo_usuario("ADMIN");
+			nuevoPaciente.setTipo_usuario("USUARIO");
 		
 			String pw = nuevoPaciente.getClave();
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
@@ -57,6 +57,7 @@ public class ImpPacienteService implements PacienteService {
 			pacienteActualizado.setNombres(paciente.getNombres());
 			pacienteActualizado.setApellidos(paciente.getApellidos());
 			pacienteActualizado.setDni(paciente.getDni());
+			pacienteActualizado.setClave(paciente.getClave());
 			pacienteActualizado.setEmail(paciente.getEmail());
 			pacienteActualizado.setTelefono(paciente.getTelefono());
 			pacienteActualizado.setFecha_nacimiento(paciente.getFecha_nacimiento().toString());

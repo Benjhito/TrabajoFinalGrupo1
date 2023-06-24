@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import ar.edu.unju.edm.model.Especialidad;
-import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.EspecialidadService;
 import ar.edu.unju.edm.repository.EspecialidadRepository;
 
