@@ -12,20 +12,29 @@ import ar.edu.unju.edm.repository.PacienteRepository;
 @SpringBootApplication
 public class TrabajoFinalGrupo1Application implements CommandLineRunner {
 
-	@Autowired
-	PacienteRepository pacienteRepository;
-	@Autowired
-	PacienteService pacienteService;
-	@Autowired
-	Paciente paciente;
-	
-	public static void main(String[] args) {
-		SpringApplication.run(TrabajoFinalGrupo1Application.class, args);
-	}
+    @Autowired
+    PacienteRepository pacienteRepository;
 
-	
-	@Override
-	public void run(String... args) throws Exception {
+    @Autowired
+    PacienteService pacienteService;
 
-	}
+    @Autowired
+    Paciente paciente;
+
+    public static void main(String[] args) {
+        SpringApplication.run(TrabajoFinalGrupo1Application.class, args);
+    }
+
+    // Este método se ejecuta al iniciar la aplicación
+    @Override
+    public void run(String... args) throws Exception {
+        /*
+        Paciente paciente = new Paciente();
+        paciente.setEmail("admin@example.com");
+        paciente.setClave("admin123");
+        paciente.setTipo_usuario("ADMIN");
+        paciente.setEstado(true);
+        pacienteService.cargarPaciente(paciente);
+        */
+    }
 }

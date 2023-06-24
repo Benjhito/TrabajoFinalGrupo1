@@ -46,11 +46,11 @@
 		  <th>Fecha de Ingreso</th>
 		  <th>Domicilio</th>
 		  <th>Especialidad</th>
-      <th>Acciones</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="medico : ${listaMedicos}">
+        <tr th:each="medico : ${listadoMedicos}">
           <td th:text="${medico.id_medico}"></td>
           <td th:text="${medico.nombres}"></td>
           <td th:text="${medico.apellidos}"></td>

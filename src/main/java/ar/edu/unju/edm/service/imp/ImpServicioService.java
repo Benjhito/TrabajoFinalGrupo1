@@ -19,8 +19,10 @@ public class ImpServicioService implements ServicioService {
 	// CREATE
 	@Override
 	public void cargarServicio(Servicio nuevoServicio) {
-		nuevoServicio.setEstado(true);
-		servicioRepository.save(nuevoServicio);
+		if (!existeServicio(nuevoServicio)) {
+	        nuevoServicio.setEstado(true);
+	        servicioRepository.save(nuevoServicio);
+	    }
 	}
 	
 	// READ 1

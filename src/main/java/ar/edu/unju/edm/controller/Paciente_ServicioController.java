@@ -85,6 +85,7 @@ public class Paciente_ServicioController {
 		
 		paciente_servicioService.eliminarPaciente_Servicio(id_paciente_servicio);
 		vistaListaPaciente_Servicio.addObject("listadoPaciente_Servicio", paciente_servicioService.listarPaciente_Servicio());
+		vistaListaPaciente_Servicio.addObject("mensaje", "El médico se ha eliminado exitosamente.");
 		
 		return vistaListaPaciente_Servicio;
 	}

@@ -42,7 +42,7 @@
           <div>
             <label for="medico">Medico: </label>
             <select id="medico" name="medico.id" th:field="*{medico}">
-              <option th:each="e:${medicos}" th:value="${m.id}" th:text="${m.nombre}" th:selected="${m.id == servicio.medico.id}"></option>
+              <option th:each="m:${medicos}" th:value="${m.id}" th:text="${m.nombre}" th:selected="${m.id == servicio.medico.id}"></option>
             </select>
           </div>
         </fieldset>

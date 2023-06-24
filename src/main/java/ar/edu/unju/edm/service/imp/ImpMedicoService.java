@@ -19,8 +19,10 @@ public class ImpMedicoService implements MedicoService {
 	// CREATE
 	@Override
 	public void cargarMedico(Medico nuevoMedico) {
-		nuevoMedico.setEstado(true);
-		medicoRepository.save(nuevoMedico);
+	    if (!existeMedico(nuevoMedico)) {
+	        nuevoMedico.setEstado(true);
+	        medicoRepository.save(nuevoMedico);
+	    }
 	}
 	
 	// READ 1
@@ -69,7 +71,7 @@ public class ImpMedicoService implements MedicoService {
 		medicoRepository.save(auxiliar.get());
 	}
 	
-	// Busca un medico segun su DNI
+	// Busca un medico segun su legajo
 	public boolean existeMedico(Medico medico) {
 		Medico medicoExistente = medicoRepository.findByLegajo(medico.getLegajo());
 		

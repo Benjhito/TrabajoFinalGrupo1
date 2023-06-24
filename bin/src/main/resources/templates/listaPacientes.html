@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>Lista de Pacientes</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-
+     <!-- Cabecera - Ortiz -->
+     <header class="header">
+      <div class="container-h logo-nav-container">
+        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <div class="dropdown">
+              <li><a href="#">Formularios</a></li>
+              <div class="dropdown-content">
+                <a href="/formMedico">Medicos</a>
+                <a href="/formPaciente">Pacientes</a>
+                <a href="/formServicio">Servicio</a>
+                <a href="/formEspecialidad">Especialidad</a>
+              </div>
+            </div>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="button-back">
+      <a title="Volver" href="/formPaciente"><img src="img/back.png" alt="back" height ="20" width="22"  /></a>
+    </div>
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>e-mail</th>
+        <th>Telefono</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Domicilio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="paciente : ${listaPacientes}">
+            <td th:text="${paciente.id_paciente}"></td>
+            <td th:text="${paciente.nombres}"></td>
+            <td th:text="${paciente.apellidos}"></td>
+            <td th:text="${paciente.dni}"></td>
+            <td th:text="${paciente.email}"></td>
+            <td th:text="${paciente.telefono}"></td>
+            <td th:text="${paciente.fecha_nacimiento}"></td>
+            <td th:text="${paciente.domicilio}"></td>
+          
+            <td>
+              <form th:action="@{/editarPaciente/{id}(id=${paciente.id_paciente})}" method="post">
+                <button type="submit"> <img src="img/pencil.png" height ="12" width="15" /></button>
+              </form>
+    
+              <form th:action="@{/eliminarPaciente}" method="post">
+                <input type="hidden" name="id_paciente" th:value="${paciente.id_paciente}">
+                <button type="submit"> <img src="img/basura.png" height ="12" width="15" /></button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </body>
 </html>

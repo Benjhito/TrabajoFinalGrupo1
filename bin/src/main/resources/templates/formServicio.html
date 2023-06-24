@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Formulario Servicio</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-
+     <!-- Cabecera - Ortiz -->
+     <header class="header">
+      <div class="container-h logo-nav-container">
+        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <div class="dropdown">
+              <li><a href="#">Formularios</a></li>
+              <div class="dropdown-content">
+                <a href="/formservicio">servicios</a>
+                <a href="/formPaciente">Pacientes</a>
+                <a href="/formServicio">Servicio</a>
+                <a href="/formEspecialidad">Especialidad</a>
+              </div>
+            </div>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="form-container">
+      <form th:object="${servicio}" th:action="@{/listaServicios}" method="post">
+        <input type="hidden" th:field="*{id_servicio}">
+        <fieldset>
+          <div>
+            <label foer="desc">Descripcion: </label>
+            <input type="number" id="descripcion" name="descripcion" th:field="*{descripcion}" th:value="${servicio.descripcion}" required>
+          </div>
+          <div>
+            <label for="dni">Costo: </label>
+            <input type="number" id="costo" name="costo" th:field="*{costo}" th:value="${servicio.costo}" required>
+          </div>
+          <div>
+            <label for="medico">Medico: </label>
+            <select id="medico" name="medico.id" th:field="*{medico}">
+              <option th:each="e:${medicos}" th:value="${m.id}" th:text="${m.nombre}" th:selected="${m.id == servicio.medico.id}"></option>
+            </select>
+          </div>
+        </fieldset>
+  
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+       </form>
+    </div>
   </body>
 </html>

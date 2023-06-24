@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>Formulario Paciente</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
+     <!-- Cabecera - Ortiz -->
+     <header class="header">
+      <div class="container-h logo-nav-container">
+        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index">Inicio</a></li>
+            <div class="dropdown">
+              <li><a href="#">Formularios</a></li>
+              <div class="dropdown-content">
+                <a href="/formMedico">Medicos</a>
+                <a href="/formPaciente">Pacientes</a>
+                <a href="/formServicio">Servicio</a>
+                <a href="/formEspecialidad">Especialidad</a>
+              </div>
+            </div>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
 
+    <div class="form-container">
+      <form th:object="${paciente}" th:action="@{/mostrarListaPacientes}" method="post">
+        <input type="hidden" th:field="*{id_paciente}">
+        <fieldset>
+          <legend>Información personal</legend>
+          <div>
+            <label for="nombres">Nombre(s): </label>
+            <input type="text" id="nombres" name="nombres" th:field="*{nombres}" th:value="${paciente.nombres}" required>
+          </div>
+          <div>
+            <label for="apellidos">Apellido(s): </label>
+            <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}" th:value="${paciente.apellidos}" required>
+          </div>
+          <div>
+            <label for="dni">DNI: </label>
+            <input type="number" id="dni" name="dni" th:field="*{dni}" th:value="${paciente.dni}" required>
+          </div>
+          <div>
+            <label for="fecha_nacimiento">Fecha de Nacimiento: </label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" th:value="${paciente.fecha_nacimiento}" required>
+          </div>
+          <div>
+            <label for="obra_social">Obra Social: </label>
+              <select id="obra_social" name="obra_social.id" th:field="*{obra_social}" th:value="${paciente.obra_social}">
+                <option value="1">PAMI</option>
+                <option value="2">ISJ</option>
+                <option value="3">SALUD JUJUY</option>
+              </select>
+          </div>
+        </fieldset>
+  
+        <fieldset>
+          <legend>Información de contacto</legend>
+          <div>
+            <label for="email">Correo electrónico: </label>
+            <input type="email" id="email" name="email" th:field="*{email}" th:value="${paciente.email}">
+          </div>
+          <div>
+            <label for="telefono">Teléfono: </label>
+            <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" th:value="${paciente.telefono}">
+          </div>
+          <div>
+            <label for="domicilio">Domicilio: </label>
+            <input type="text" id="domicilio" name="domicilio" th:field="*{domicilio}" th:value="${paciente.domicilio}">
+          </div>
+          </fieldset>
+  
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+       </form>
+    </div>
+    
   </body>
 </html>

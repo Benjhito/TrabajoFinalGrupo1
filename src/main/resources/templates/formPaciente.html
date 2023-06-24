@@ -30,7 +30,7 @@
     </header>
 
     <div class="form-container">
-      <form th:object="${paciente}" th:action="@{/mostrarListaPacientes}" method="post">
+      <form th:object="${paciente}" th:action="@{/listaPacientes}" method="post">
         <input type="hidden" th:field="*{id_paciente}">
         <fieldset>
           <legend>Información personal</legend>

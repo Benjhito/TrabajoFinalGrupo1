@@ -132,10 +132,6 @@ public class Medico {
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = LocalDate.parse(fecha_nacimiento);
 	}
-	
-	public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
-	}
 
 	public LocalDate getFecha_ingreso() {
 		return fecha_ingreso;
@@ -145,10 +141,6 @@ public class Medico {
 		this.fecha_ingreso = LocalDate.parse(fecha_ingreso);
 	}
 	
-	public void setFecha_ingreso(LocalDate fecha_ingreso) {
-		this.fecha_ingreso = fecha_ingreso;
-	}
-
 	public String getDomicilio() {
 		return domicilio;
 	}

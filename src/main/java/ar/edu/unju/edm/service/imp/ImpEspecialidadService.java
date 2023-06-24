@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import ar.edu.unju.edm.model.Especialidad;
+import ar.edu.unju.edm.model.Medico;
 import ar.edu.unju.edm.service.EspecialidadService;
 import ar.edu.unju.edm.repository.EspecialidadRepository;
 
@@ -18,9 +19,11 @@ public class ImpEspecialidadService implements EspecialidadService {
 	
 	// CREATE
 	@Override
-	public void cargarEspecialidad(Especialidad nuevoEspecialidad) {
-		nuevoEspecialidad.setEstado(true);
-		especialidadRepository.save(nuevoEspecialidad);
+	public void cargarEspecialidad(Especialidad nuevaEspecialidad) {
+	    if (!existeEspecialidad(nuevaEspecialidad)) {
+	        nuevaEspecialidad.setEstado(true);
+	        especialidadRepository.save(nuevaEspecialidad);
+	    }
 	}
 	
 	// READ 1

@@ -32,7 +32,7 @@ public class PacienteController {
         return vistaFormPaciente;
     }
     
-    @PostMapping("/mostrarListaPacientes")
+    @PostMapping("/listaPacientes")
 	public ModelAndView mostrarListaPacientes(@ModelAttribute("paciente") Paciente nuevoPaciente) {
 		ModelAndView vistaListaPacientes = new ModelAndView("listaPacientes");
 		try {

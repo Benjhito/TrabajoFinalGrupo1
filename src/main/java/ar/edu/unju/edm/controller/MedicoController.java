@@ -40,6 +40,7 @@ public class MedicoController {
     @GetMapping("/listaMedicos")
     public ModelAndView obtenerListaMedicos() {
     	ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
+    	vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
     	
     	return vistaListaMedicos;
     }
