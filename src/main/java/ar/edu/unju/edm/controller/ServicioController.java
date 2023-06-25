@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import javax.validation.Valid;
 
 import ar.edu.unju.edm.model.Servicio;
+import ar.edu.unju.edm.service.MedicoService;
 import ar.edu.unju.edm.service.ServicioService;
 
 @Controller
@@ -20,12 +21,15 @@ public class ServicioController {
 	// Inyeccion de Dependencias
 	@Autowired @Qualifier("servicioServicio")
 	ServicioService servicioService;
+	@Autowired
+	MedicoService medicoService;
 		
 	// Carga del formulario para Servicios
 	@GetMapping("/formServicio")
 	public ModelAndView cargarFormServicio() {
 		ModelAndView vistaFormServicio = new ModelAndView("formServicio");
 		vistaFormServicio.addObject("servicio", new Servicio());
+		vistaFormServicio.addObject("listadoMedicos", medicoService.listarMedicos());
 		
 		return vistaFormServicio;
 	}
@@ -58,6 +62,7 @@ public class ServicioController {
 	public ModelAndView modificarServicio(@PathVariable Integer id_servicio, 
 			@Valid @ModelAttribute("servicio") Servicio servicio, BindingResult result) {
 		ModelAndView vistaFormServicio = new ModelAndView("formServicio");
+		vistaFormServicio.addObject("listadoMedicos", medicoService.listarMedicos());
 		
 		if (result.hasErrors()) {
 			vistaFormServicio.addObject("mensaje", "Por favor, corrija los errores a continuacion. ");

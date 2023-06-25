@@ -15,7 +15,7 @@
             <div class="dropdown">
               <li><a href="#">Formularios</a></li>
               <div class="dropdown-content">
-                <a href="/formservicio">servicios</a>
+                <a href="/formMedico">Medicos</a>
                 <a href="/formPaciente">Pacientes</a>
                 <a href="/formServicio">Servicio</a>
                 <a href="/formEspecialidad">Especialidad</a>
@@ -32,7 +32,7 @@
         <input type="hidden" th:field="*{id_servicio}">
         <fieldset>
           <div>
-            <label foer="desc">Descripcion: </label>
+            <label for="desc">Descripcion: </label>
             <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}" th:value="${servicio.descripcion}" required>
           </div>
           <div>
@@ -41,9 +41,9 @@
           </div>
           <div>
             <label for="medico">Medico: </label>
-            <select id="medico" name="medico.id" th:field="*{medico}">
-              <option th:each="m:${medicos}" th:value="${m.id}" th:text="${m.nombre}" th:selected="${m.id == servicio.medico.id}"></option>
-            </select>
+              <select id="medico" name="medico" th:field="*{medico}" required>
+                <option th:each="medico:${listadoMedicos}" th:value="${medico.id_medico}" th:text="${medico.apellidos + ', ' + medico.nombres}" th:selected="${medico?.id_medico == servicio.medico?.id_medico}"></option>
+              </select>
           </div>
         </fieldset>
   

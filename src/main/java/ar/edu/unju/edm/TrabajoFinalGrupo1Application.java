@@ -29,18 +29,21 @@ public class TrabajoFinalGrupo1Application implements CommandLineRunner {
     // Este método se ejecuta al iniciar la aplicación
     @Override
     public void run(String... args) throws Exception {
-        /*
-        Paciente paciente = new Paciente();
-        paciente.setEmail("admin@example.com");
-        paciente.setClave("admin123");
-        paciente.setDni("10000000")
-        paciente.setTipo_usuario("ADMIN");
-        paciente.setEstado(true);
+    	/*
+    		Paciente paciente = new Paciente();
+    		paciente.setId_paciente(0);
+    		paciente.setNombres("Benjhito");
+    		paciente.setApellidos("Benjhito");
+    		paciente.setEmail("admin@example.com");
+    		paciente.setClave("admin123");
+    		paciente.setDni(10000000);
+    		paciente.setTipo_usuario("ADMIN");
+    		paciente.setEstado(true);
         
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
-		paciente.setClave(encoder.encode(pw));
+    		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+    		paciente.setClave(encoder.encode(paciente.getClave()));
         
-        pacienteService.cargarPaciente(paciente);
-        */
+    		pacienteRepository.save(paciente);
+    		*/
     }
 }

@@ -30,12 +30,12 @@ public class Paciente_Servicio {
 	public Paciente_Servicio() {}
 
 	public Paciente_Servicio(@Positive Integer id_paciente_servicio, Paciente paciente, Servicio servicio,
-			@NotNull LocalDate fecha, @NotNull Boolean estado) {
+			@NotNull String fecha, @NotNull Boolean estado) {
 		super();
 		this.id_paciente_servicio = id_paciente_servicio;
 		this.paciente = paciente;
 		this.servicio = servicio;
-		this.fecha = fecha;
+		this.fecha = LocalDate.parse(fecha);
 		this.estado = estado;
 	}
 
@@ -68,8 +68,8 @@ public class Paciente_Servicio {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFecha(String fecha) {
+		this.fecha = LocalDate.parse(fecha);
 	}
 
 	public Boolean getEstado() {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulario Paciente_Servicio</title>
+  </head>
+  <body>
+    <form th:object="${paciente_servicio}" th:action="@{/listaPacientes_Servicios}" method="post">
+      <input type="hidden" th:field="*{id_paciente_servicio}">
+      <fieldset>
+        <legend>Información General</legend>
+        <div>
+           <select id="paciente" name="paciente" th:field="*{paciente}" required>
+             <option th:each="paciente:${listadoPacientes}" th:value="${paciente.id_paciente}" th:text="${paciente.apellidos + ', ' + paciente.nombres}" th:selected="${paciente?.id_paciente == paciente_servicio.paciente?.id_paciente}"></option>
+           </select>
+        </div>
+        <div>
+          <select id="servicio" name="servicio" th:field="*{servicio}" required>
+            <option th:each="servicio:${listadoServicios}" th:value="${servicio.id_servicio}" th:text="${servicio.descripcion}" th:selected="${servicio?.id_servicio == paciente_servicio.servicio?.id_servicio}"></option>
+          </select>        
+        </div>
+        <div>
+          <label for="fecha">Fecha: </label>
+          <input type="date" id="fecha" name="fecha" th:field="*{fecha}" th:value="${paciente_servicio.fecha}" required>
+        </div>
+      </fieldset>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+     </form>
+  </body>
+</html>

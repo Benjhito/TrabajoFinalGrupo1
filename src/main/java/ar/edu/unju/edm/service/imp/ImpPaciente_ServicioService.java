@@ -47,7 +47,7 @@ public class ImpPaciente_ServicioService implements Paciente_ServicioService {
 			
 			paciente_servicioActualizado.setPaciente(paciente_servicio.getPaciente());
 			paciente_servicioActualizado.setServicio(paciente_servicio.getServicio());
-			paciente_servicioActualizado.setFecha(paciente_servicio.getFecha());
+			paciente_servicioActualizado.setFecha(paciente_servicio.getFecha().toString());
 			
 			paciente_servicioRepository.save(paciente_servicioActualizado);
 		}

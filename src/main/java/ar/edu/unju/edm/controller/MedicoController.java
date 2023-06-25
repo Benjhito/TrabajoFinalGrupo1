@@ -23,12 +23,13 @@ public class MedicoController {
     MedicoService medicoService;
     @Autowired
     EspecialidadService especialidadService;
-
+    
     // Carga del formulario para Medicos
     @GetMapping("/formMedico")
     public ModelAndView cargarFormMedico() {
         ModelAndView vistaFormMedico = new ModelAndView("formMedico");
         vistaFormMedico.addObject("medico", new Medico());
+		vistaFormMedico.addObject("listadoEspecialidades", especialidadService.listarEspecialidades());
         
         return vistaFormMedico;
     }
@@ -43,25 +44,25 @@ public class MedicoController {
     }
     
     @PostMapping("/listaMedicos")
-	public ModelAndView mostrarListaMedicos(@ModelAttribute("medico") Medico nuevoMedico) {
-		ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
-		
-		try {
-			medicoService.cargarMedico(nuevoMedico);
-		} catch (Exception e) {
-			vistaListaMedicos.addObject("mensaje", "Ha ocurrido un error cargando la pagina. ");
-		}
-		vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
-		vistaListaMedicos.addObject("listadoEspecialidades", especialidadService.listarEspecialidades());
-		
-		return vistaListaMedicos;
-	}
+    public ModelAndView mostrarListaMedicos(@ModelAttribute("medico") Medico nuevoMedico) {
+        ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
+        
+        try {
+            medicoService.cargarMedico(nuevoMedico);
+        } catch (Exception e) {
+            vistaListaMedicos.addObject("mensaje", "Ha ocurrido un error cargando la pagina. ");
+        }
+    	vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
+        
+        return vistaListaMedicos;
+    }
     
     // Carga del formulario Medico para modificar datos
     @PostMapping("/editarMedico/{id_medico}")
     public ModelAndView modificarMedico(@PathVariable Integer id_medico, 
     		@Valid @ModelAttribute("medico") Medico medico, BindingResult result) {
         ModelAndView vistaFormMedico = new ModelAndView("formMedico");
+        vistaFormMedico.addObject("listadoEspecialidades", especialidadService.listarEspecialidades());
         
         if (result.hasErrors()) {
             vistaFormMedico.addObject("mensaje", "Por favor, corrija los errores a continuacion. ");
@@ -82,12 +83,12 @@ public class MedicoController {
     // Carga de la lista en caso de querer eliminar un Medico
     @PostMapping("/eliminarMedico")
     public ModelAndView eliminarMedico(@RequestParam("id_medico") Integer id_medico) {
-      ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
+    	ModelAndView vistaListaMedicos = new ModelAndView("listaMedicos");
       
-      medicoService.eliminarMedico(id_medico);
-      vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
-      vistaListaMedicos.addObject("mensaje", "El médico se ha eliminado exitosamente.");
+    	medicoService.eliminarMedico(id_medico);
+    	vistaListaMedicos.addObject("listadoMedicos", medicoService.listarMedicos());
+    	vistaListaMedicos.addObject("mensaje", "El médico se ha eliminado exitosamente.");
       
-      return vistaListaMedicos;
+    	return vistaListaMedicos;
     }
 }
