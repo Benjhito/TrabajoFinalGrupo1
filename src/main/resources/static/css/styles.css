@@ -1,10 +1,10 @@
 body{
-    background-color: aliceblue;
+    background-color: #f0f0f0; /*aliceblue;*/
     color: rgb(45, 52, 53);
 }
 
 /* Cabecera - Ortiz */
-.header{
+  .header{
     background: #529bb8;
     color: rgb(43, 43, 43);
     padding: 2rem 0;
@@ -15,31 +15,38 @@ body{
     top: 0;
     width: 100%;
   }
+  
   .header a{
     color: rgb(43, 43, 43);
     text-decoration: none;
   }
+  
   .logo-nav-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  
   .logo{
     letter-spacing: 5px;
     font-size: 2.2em;
   }
+  
   .logo-desc{
     display: flex;
     color: #777;
   }
+  
   .nav ul{
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  
   .nav ul li{
     display: inline-block;
   }
+  
   .nav ul li a{
     display: block;
     padding: 0.5rem 1rem;
@@ -59,12 +66,19 @@ body{
   .content-table { 
     text-align: center;
     margin: 0 auto;
-    border-collapse: collapse; 
+    border: 3px solid #c8e6c9;
+    border-collapse: collapse;
+    border-spacing: 0; 
     margin-top: 2%;
     font-size: 1em; 
     font-family: sans-serif; 
     min-width: 450px; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  }
+
+  th, td {
+    text-align: center;
+    border: 1px solid #c8e6c9;
   }
 
   .content-table thead tr { 
@@ -136,4 +150,47 @@ body{
   .main-text{
     display: inline-block;
     vertical-align: top;
+  }
+  
+  fieldset {
+    margin-bottom: 1.5rem;
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  legend {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer > .row {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #f7f7f7;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  nav {
+    background-color: #529BB8;
+  }
+  
+  .my-6 {
+    margin-top: 260px !important;
+  }
+  fieldset {
+   border-color: lightgray;
+   border-width: 2px;
   }

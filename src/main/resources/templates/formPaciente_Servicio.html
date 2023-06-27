@@ -2,32 +2,129 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Formulario Paciente_Servicio</title>
+    <title>Umbrella's Hospital - Reserva de Turno</title>
+    
+    <link rel="icon" href="img/1024px-Umbrella_Corporation_logo.svg.ico" type="image/x-icon">
+    
+    <!-- CSS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+	<!-- JS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <form th:object="${paciente_servicio}" th:action="@{/listaPacientes_Servicios}" method="post">
-      <input type="hidden" th:field="*{id_paciente_servicio}">
-      <fieldset>
-        <legend>Información General</legend>
-        <div>
-           <select id="paciente" name="paciente" th:field="*{paciente}" required>
-             <option th:each="paciente:${listadoPacientes}" th:value="${paciente.id_paciente}" th:text="${paciente.apellidos + ', ' + paciente.nombres}" th:selected="${paciente?.id_paciente == paciente_servicio.paciente?.id_paciente}"></option>
-           </select>
-        </div>
-        <div>
-          <select id="servicio" name="servicio" th:field="*{servicio}" required>
-            <option th:each="servicio:${listadoServicios}" th:value="${servicio.id_servicio}" th:text="${servicio.descripcion}" th:selected="${servicio?.id_servicio == paciente_servicio.servicio?.id_servicio}"></option>
-          </select>        
-        </div>
-        <div>
-          <label for="fecha">Fecha: </label>
-          <input type="date" id="fecha" name="fecha" th:field="*{fecha}" th:value="${paciente_servicio.fecha}" required>
-        </div>
-      </fieldset>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm px-5 py-3">
+      <a class="navbar-brand" href="/">UMBRELLA'S HOSPITAL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left Side Of Navbar -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Médicos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaMedicos">Gestión de Médicos</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes">Gestión de Pacientes</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Especialidades</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaEspecialidades">Gestión de Especialidades</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaServicios">Gestión de Servicios</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turnos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes_Servicios">Gestión de Turnos</a>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ms-auto">
+            <!-- Authentication Links -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingreso</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="/login">Entrar</a>
+                </div>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="d-flex justify-content-center form-container">
+      <form class="w-50" th:object="${paciente_servicio}" th:action="@{/listaPacientes_Servicios}" method="post">
+        <input type="hidden" th:field="*{id_paciente_servicio}">
+
+        <fieldset>
+          <legend>Información General</legend>
+          <div class="row">
+            <div class="col-sm-4 mb-3">
+              <label for="paciente" class="form-label">Paciente: </label>
+              <select id="paciente" name="paciente" class="form-select" th:field="*{paciente}" required>
+                <option th:each="paciente:${listadoPacientes}" th:value="${paciente.id_paciente}" th:text="${paciente.apellidos + ', ' + paciente.nombres}" th:selected="${paciente?.id_paciente == paciente_servicio.paciente?.id_paciente}"></option>
+               </select>
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="servicio" class="form-label">Servicio: </label>
+              <select id="servicio" name="servicio" class="form-select" th:field="*{servicio}" required>
+                <option th:each="servicio:${listadoServicios}" th:value="${servicio.id_servicio}" th:text="${servicio.descripcion}" th:selected="${servicio?.id_servicio == paciente_servicio.servicio?.id_servicio}"></option>
+              </select>        
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="fecha" class="form-label">Fecha: </label>
+              <input type="date" class="form-control" id="fecha" name="fecha" th:field="*{fecha}" th:value="${paciente_servicio.fecha}" required>
+            </div>
+          </div>
+          
+          <div class="d-flex justify-content-around">
+		      <a class="button btn btn-secondary px-4 mx-5" href="/listaPacientes_Servicios" title="Volver a la página de Gestión de Turnos">Volver</a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </fieldset>
      </form>
+     </div>
+     
+    <!-- Footer -->
+    <footer class="footer container-fluid px-5">
+	  <div class="row mt-3">
+	    <div class="col-md-6">
+	      <div class="copyright">
+	         <a target="_blank" rel="noopener noreferrer" href="http://www.gnu.org/copyleft">Copyleft</a> &#169; 
+	         <a target="_blank" rel="noopener noreferrer" href="#">Programación Visual 2023 - Grupo 1</a>
+	       </div>
+	    </div>
+	    <div class="col-md-6">
+	       <div id="poweredBy" class="text-end">
+	       	 <a target="_blank" rel="noopener noreferrer" href="https://escmi.unju.edu.ar/">Escuela de Minas Dr. Horacio Carrillo</a>
+	       </div>
+	     </div>
+	  </div>
+	</footer>
   </body>
 </html>

@@ -2,85 +2,162 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Formulario Paciente</title>
+    <title>Umbrella's Hospital - Nuevo Paciente</title>
+    
+    <link rel="icon" href="img/1024px-Umbrella_Corporation_logo.svg.ico" type="image/x-icon">
+    
+    <!-- CSS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+	<!-- JS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-     <!-- Cabecera - Ortiz -->
-     <header class="header">
-      <div class="container-h logo-nav-container">
-        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
-        <nav class="nav">
-          <ul>
-            <li><a href="/index">Inicio</a></li>
-            <div class="dropdown">
-              <li><a href="#">Formularios</a></li>
-              <div class="dropdown-content">
-                <a href="/formMedico">Medicos</a>
-                <a href="/formPaciente">Pacientes</a>
-                <a href="/formServicio">Servicio</a>
-                <a href="/formEspecialidad">Especialidad</a>
-              </div>
-            </div>
-            <li><a href="#">Ayuda</a></li>
-            <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-      </div>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm px-5 py-3">
+      <a class="navbar-brand" href="/">UMBRELLA'S HOSPITAL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="form-container">
-      <form th:object="${paciente}" th:action="@{/listaPacientes}" method="post">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left Side Of Navbar -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Médicos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaMedicos">Gestión de Médicos</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes">Gestión de Pacientes</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Especialidades</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaEspecialidades">Gestión de Especialidades</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaServicios">Gestión de Servicios</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turnos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes_Servicios">Gestión de Turnos</a>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ms-auto">
+            <!-- Authentication Links -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingreso</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="/login">Entrar</a>
+                </div>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="d-flex justify-content-center mt-5">
+      <form class="w-50" th:object="${paciente}" th:action="@{/listaPacientes}" method="post">
         <input type="hidden" th:field="*{id_paciente}">
+
         <fieldset>
           <legend>Información personal</legend>
-          <div>
-            <label for="nombres">Nombre(s): </label>
-            <input type="text" id="nombres" name="nombres" th:field="*{nombres}" th:value="${paciente.nombres}" required>
+          <div class="row">
+    		<div class="col-sm-6 mb-3">
+              <label for="nombres" class="form-label">Nombre(s): </label>
+              <input type="text" class="form-control" id="nombres" name="nombres" th:field="*{nombres}" th:value="${paciente.nombres}" required>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+              <label for="apellidos" class="form-label">Apellido(s): </label>
+              <input type="text" class="form-control" id="apellidos" name="apellidos" th:field="*{apellidos}" th:value="${paciente.apellidos}" required>
+            </div>
           </div>
-          <div>
-            <label for="apellidos">Apellido(s): </label>
-            <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}" th:value="${paciente.apellidos}" required>
-          </div>
-          <div>
-            <label for="dni">DNI: </label>
-            <input type="number" id="dni" name="dni" th:field="*{dni}" th:value="${paciente.dni}" required>
-          </div>
-          <div>
-            <label for="fecha_nacimiento">Fecha de Nacimiento: </label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" th:value="${paciente.fecha_nacimiento}" required>
-          </div>
-          <div>
-            <label for="obra_social">Obra Social: </label>
-              <select id="obra_social" name="obra_social.id" th:field="*{obra_social}" th:value="${paciente.obra_social}">
+
+		  <div class="row">
+            <div class="col-sm-4 mb-3">
+              <label for="dni" class="form-label">DNI: </label>
+              <input type="number" class="form-control" id="dni" name="dni" th:field="*{dni}" th:value="${paciente.dni}" required>
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento: </label>
+              <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" th:value="${paciente.fecha_nacimiento}" required>
+            </div>
+
+            <div class="col-sm-4 mb-3">
+              <label for="obra_social" class="form-label">Obra Social: </label>
+              <select id="obra_social" name="obra_social.id" class="form-select" th:field="*{obra_social}" th:value="${paciente.obra_social}">
                 <option value="PAMI">PAMI</option>
                 <option value="ISJ">ISJ</option>
                 <option value="SALUD JUJUY">SALUD JUJUY</option>
               </select>
+            </div>
           </div>
         </fieldset>
   
         <fieldset>
           <legend>Información de contacto</legend>
-          <div>
-            <label for="email">Correo electrónico: </label>
-            <input type="email" id="email" name="email" th:field="*{email}" th:value="${paciente.email}" required>
+          <div class="row">
+    		<div class="col-sm-6 mb-3">
+            	<label for="email" class="form-label">Correo electrónico: </label>
+            	<input type="email" class="form-control" id="email" name="email" th:field="*{email}" th:value="${paciente.email}" required>
+          	</div>
+
+	        <div class="col-sm-6 mb-3">
+	          <label for="telefono" class="form-label">Teléfono: </label>
+	          <input type="tel" class="form-control" id="telefono" name="telefono" th:field="*{telefono}" th:value="${paciente.telefono}">
+	        </div>
+
+            <div class="col-sm-12 mb-3">
+              <label for="domicilio" class="form-label">Domicilio: </label>
+              <input type="text" class="form-control" id="domicilio" name="domicilio" th:field="*{domicilio}" th:value="${paciente.domicilio}">
           </div>
-          <div>
-            <label for="telefono">Teléfono: </label>
-            <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" th:value="${paciente.telefono}">
-          </div>
-          <div>
-            <label for="domicilio">Domicilio: </label>
-            <input type="text" id="domicilio" name="domicilio" th:field="*{domicilio}" th:value="${paciente.domicilio}">
-          </div>
-          </fieldset>
-  
-          <div class="form-group">
+          
+          <div class="d-flex justify-content-around">
+		      <a class="button btn btn-secondary px-4 mx-5" href="/listaPacientes" title="Volver a la página de Gestión de Pacientes">Volver</a>
             <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
+          </div>
+        </fieldset>
+  
        </form>
     </div>
     
+    <!-- Footer -->
+  	<footer class="footer container-fluid px-5">
+	  <div class="row mt-3">
+	    <div class="col-md-6">
+	      <div class="copyright">
+	         <a target="_blank" rel="noopener noreferrer" href="http://www.gnu.org/copyleft">Copyleft</a> &#169; 
+	         <a target="_blank" rel="noopener noreferrer" href="#">Programación Visual 2023 - Grupo 1</a>
+	       </div>
+	    </div>
+	    <div class="col-md-6">
+	       <div id="poweredBy" class="text-end">
+	       	 <a target="_blank" rel="noopener noreferrer" href="https://escmi.unju.edu.ar/">Escuela de Minas Dr. Horacio Carrillo</a>
+	       </div>
+	     </div>
+	  </div>
+	</footer>
   </body>
 </html>

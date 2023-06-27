@@ -2,46 +2,121 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Formulario Especialidad</title>
+    <title>Umbrella's Hospital - Nueva Especialidad</title>
+    
+    <link rel="icon" href="img/1024px-Umbrella_Corporation_logo.svg.ico" type="image/x-icon">
+    
+    <!-- CSS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+	<!-- JS de Bootstrap 5 desde la CDN de Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-     <!-- Cabecera - Ortiz -->
-     <header class="header">
-      <div class="container-h logo-nav-container">
-        <a href="#" class="logo">UMBRELLA'S HOSPITAL</a>
-        <nav class="nav">
-          <ul>
-            <li><a href="/index">Inicio</a></li>
-            <div class="dropdown">
-              <li><a href="#">Formularios</a></li>
-              <div class="dropdown-content">
-                <a href="/formMedico">Medicos</a>
-                <a href="/formPaciente">Pacientes</a>
-                <a href="/formServicio">Servicio</a>
-                <a href="/formEspecialidad">Especialidad</a>
-              </div>
-            </div>
-            <li><a href="#">Ayuda</a></li>
-            <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-      </div>
-    </header>
-  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm px-5 py-3">
+      <a class="navbar-brand" href="/">UMBRELLA'S HOSPITAL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="form-container">
-      <form th:object="${especialidad}" th:action="@{/listaEspecialidades}" method="post">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left Side Of Navbar -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Médicos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaMedicos">Gestión de Médicos</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes">Gestión de Pacientes</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Especialidades</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaEspecialidades">Gestión de Especialidades</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaServicios">Gestión de Servicios</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Turnos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/listaPacientes_Servicios">Gestión de Turnos</a>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ms-auto">
+            <!-- Authentication Links -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingreso</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="/login">Entrar</a>
+                </div>
+            </li>
+        </ul>
+      </div>
+    </nav>
+ 
+    <!-- Content -->
+    <div class="d-flex justify-content-center form-container">
+      <form class="w-50" th:object="${especialidad}" th:action="@{/listaEspecialidades}" method="post">
         <input type="hidden" th:field="*{id_especialidad}">
-        <label>Nombre: </label>
-        <input type="text" th:field="*{nombre}">
-        <label>Descripcion: </label>
-        <input type="text" th:field="*{descripcion}">
-        <a href="/index">VOLVER</a>
-        <input type="reset" value="RESTAURAR">
-        <input type="submit" value="REGISTRAR">
+
+        <fieldset>
+          <div class="row">
+            <div class="col-sm-6 mb-3">
+              <label class="form-label">Nombre: </label>
+              <input type="text" class="form-control" th:field="*{nombre}">
+            </div>
+
+		    <div class="col-sm-6 mb-3">
+              <label class="form-label">Descripcion: </label>
+              <input type="text" class="form-control" th:field="*{descripcion}">
+            </div>
+          </div>
+          
+          <div class="d-flex justify-content-around">
+            <a class="button btn btn-secondary px-4" href="/listaEspecialidades" title="Volver a la página de Gestión de Especialidades">Volver</a>
+            <input type="reset" class="btn btn-info text-white" value="Limpiar">
+            <input type="submit" class="btn btn-primary" value="Registrar">
+          </div>
+        </fieldset>
+
       </form>
     </div>
-  
+  	
+  	<!-- Footer -->
+  	<footer class="footer container-fluid px-5">
+	  <div class="row mt-3">
+	    <div class="col-md-6">
+	      <div class="copyright">
+	         <a target="_blank" rel="noopener noreferrer" href="http://www.gnu.org/copyleft">Copyleft</a> &#169; 
+	         <a target="_blank" rel="noopener noreferrer" href="#">Programación Visual 2023 - Grupo 1</a>
+	       </div>
+	    </div>
+	    <div class="col-md-6">
+	       <div id="poweredBy" class="text-end">
+	       	 <a target="_blank" rel="noopener noreferrer" href="https://escmi.unju.edu.ar/">Escuela de Minas Dr. Horacio Carrillo</a>
+	       </div>
+	     </div>
+	  </div>
+	</footer>
   </body>
 </html>
