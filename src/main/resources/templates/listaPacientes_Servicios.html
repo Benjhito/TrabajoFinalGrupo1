@@ -96,8 +96,8 @@
       <tbody>
         <tr th:each="paciente_servicio : ${listadoPaciente_Servicio}">
           <td th:text="${paciente_servicio.id_paciente_servicio}"></td>
-          <td th:text="${paciente_servicio.paciente}"></td>
-          <td th:text="${paciente_servicio.servicio}"></td>
+          <td th:text="${paciente_servicio.paciente.apellidos + ', ' + paciente_servicio.paciente.nombres}"></td>
+          <td th:text="${paciente_servicio.servicio.descripcion}"></td>
           <td th:text="${paciente_servicio.fecha}"></td>
         
           <td>

@@ -98,7 +98,7 @@
           <td th:text="${servicio.id_servicio}"></td>
           <td th:text="${servicio.descripcion}"></td>
           <td th:text="${servicio.costo}"></td>
-          <td th:text="${servicio.medico}"></td>
+          <td th:text="${servicio.medico.apellidos + ', ' + servicio.medico.nombres}"></td>
           
           <td>
             <div class="d-flex justify-content-around">
